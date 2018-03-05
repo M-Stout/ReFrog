@@ -37,7 +37,7 @@
 				}
 			}
 			
-			PlaceTile(5,5,"waterTile");
+			PlaceRiver(5);
 			
 			ArrangeTiles();
 			
@@ -71,6 +71,12 @@
 			tiles[x][y].width = 120;
 			tiles[x][y].height = 114.4;
 			stage.addChild(tiles[x][y]);
+		}
+		
+		function PlaceRiver(y: Number){
+			for (var x:int = 0; x < 10; x++) {
+				PlaceTile(x, y, "waterTile");
+			}
 		}
 		
 		function ArrangeTiles(){

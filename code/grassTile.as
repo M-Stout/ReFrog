@@ -3,7 +3,7 @@
 	import flash.display.MovieClip;
 	
 	
-	public class grassTile extends MovieClip {
+	public class grassTile extends Tile {
 		
 		
 		public function grassTile() {

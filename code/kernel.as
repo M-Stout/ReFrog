@@ -43,7 +43,13 @@
 		
 		function Update(e:Event){
 			
-			
+			for (var y:int = 0; y < 10; y++) {
+				for (var x:int = 0; x < 10; x++) {
+					if (tiles[x][y].y < tiles[x][y].properPosition.y){
+						tiles[x][y].y+= 10;
+					}
+				}
+			}
 			
 		}
 		
@@ -60,6 +66,10 @@
 			tiles[x][y] = new tileTypeClass();	
 			tiles[x][y].x = ToIsometric(x, y).x;
 			tiles[x][y].y = ToIsometric(x, y).y;
+			
+			tiles[x][y].SetProperPosition();
+			tiles[x][y].y -= 1000;
+			
 			tiles[x][y].width = 120;
 			tiles[x][y].height = 114.4;
 			stage.addChild(tiles[x][y]);

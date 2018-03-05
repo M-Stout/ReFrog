@@ -3,7 +3,7 @@
 	import flash.display.MovieClip;
 	
 	
-	public class waterTile extends MovieClip {
+	public class waterTile extends Tile {
 		
 		
 		public function waterTile() {

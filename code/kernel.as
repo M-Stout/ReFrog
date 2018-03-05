@@ -12,7 +12,7 @@
 		
 		var introPlaying: Boolean = true;
 		var introAnimationPosition: Number = 1000;
-		
+		var introDirection: Number = Math.round(Math.random()*4);
 		
 		public function kernel() {
 			// constructor code
@@ -54,7 +54,20 @@
 					for (var x:int = 0; x < 10; x++) {
 						if (introAnimationPosition > -1000){
 							if (tiles[x][y].y < tiles[x][y].properPosition.y){
-								tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (x*100);
+								switch (introDirection){
+									case 0:
+										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-y*100);
+										break;
+									case 1:
+										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (y*100);
+										break;
+									case 2:
+										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-x*100);
+										break;
+									default:
+										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (x*100);
+										break;
+								}
 							} else {
 								tiles[x][y].y = tiles[x][y].properPosition.y;
 							}

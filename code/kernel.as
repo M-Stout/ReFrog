@@ -31,15 +31,7 @@
 				tiles[i] = [];
 			}
 			
-			for (var y:int = 0; y < 10; y++) {
-				for (var x:int = 0; x < 10; x++) {
-					PlaceTile(x, y, "grassTile");
-				}
-			}
-			
-			PlaceRiver(5);
-			
-			ArrangeTiles();
+			GenerateLevel();
 			
 			//game timer
 			var _period:Number = 1000/60;
@@ -77,6 +69,21 @@
 			for (var x:int = 0; x < 10; x++) {
 				PlaceTile(x, y, "waterTile");
 			}
+		}
+		
+		function GenerateLevel(){
+			var numberOfRivers: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
+			for (var y:int = 0; y < 10; y++) {
+				for (var x:int = 0; x < 10; x++) {
+					PlaceTile(x, y, "grassTile");
+				}
+			}
+			
+			for (var r:int = 0; r < numberOfRivers; r++) {
+				PlaceRiver((Math.round(Math.random()*5))+2); //places random rivers between y 2 and 7
+			}
+			
+			ArrangeTiles();
 		}
 		
 		function ArrangeTiles(){

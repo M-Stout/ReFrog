@@ -79,9 +79,19 @@
 				}
 			}
 			
-			for (var r:int = 0; r < numberOfRivers; r++) {
-				PlaceRiver((Math.round(Math.random()*5))+2); //places random rivers between y 2 and 7
+			for (var y:int = 2; y < 8; y++) {//random between 2 and 7
+				if(Math.random()>0.5){
+					if(Math.random()>0.5){
+						PlaceRiver(y);
+					} else {
+						//place road :)
+					}
+				}
+				
 			}
+			//for (var r:int = 0; r < numberOfRivers; r++) {
+			//	PlaceRiver(RandomNumberBetween(2, 7)); //places random rivers between y 2 and 7
+			//}
 			
 			ArrangeTiles();
 		}
@@ -94,6 +104,10 @@
 					}
 				}
 			}
+		}
+		
+		function RandomNumberBetween(Min: Number, Max: Number){
+			return Math.round(Math.random()*(Max-Min))+Min;
 		}
 		
 	}

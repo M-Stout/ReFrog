@@ -10,7 +10,9 @@
 		
 		public var tiles = [];
 		
-		var introAnimationPosition: Number = -1000;
+		var introPlaying: Boolean = true;
+		var introAnimationPosition: Number = 1000;
+		
 		
 		public function kernel() {
 			// constructor code
@@ -45,11 +47,26 @@
 		
 		function Update(e:Event){
 			
-			for (var y:int = 0; y < 10; y++) {
-				for (var x:int = 0; x < 10; x++) {
-					if (tiles[x][y].y < tiles[x][y].properPosition.y){
-						introAnimationPosition += 10;
-						tiles[x][y].y = introAnimationPosition;
+			if (introPlaying){
+				introAnimationPosition -= 20;
+				trace(introAnimationPosition);
+				for (var y:int = 0; y < 10; y++) {
+					for (var x:int = 0; x < 10; x++) {
+						if (introAnimationPosition > -1000){
+							if (tiles[x][y].y < tiles[x][y].properPosition.y){
+								tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (x*100);
+							} else {
+								tiles[x][y].y = tiles[x][y].properPosition.y;
+							}
+						}
+						else {
+							for (var y:int = 0; y < 10; y++) {
+								for (var x:int = 0; x < 10; x++) {
+									tiles[x][y].y = tiles[x][y].properPosition.y;
+								}
+							}
+							introPlaying = false;									
+						}
 					}
 				}
 			}

@@ -10,6 +10,8 @@
 		
 		public var tiles = [];
 		
+		var introAnimationPosition: Number = -1000;
+		
 		public function kernel() {
 			// constructor code
 			
@@ -46,7 +48,8 @@
 			for (var y:int = 0; y < 10; y++) {
 				for (var x:int = 0; x < 10; x++) {
 					if (tiles[x][y].y < tiles[x][y].properPosition.y){
-						tiles[x][y].y+= 10;
+						introAnimationPosition += 10;
+						tiles[x][y].y = introAnimationPosition;
 					}
 				}
 			}

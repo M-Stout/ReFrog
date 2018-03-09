@@ -144,7 +144,6 @@
 		
 		function IntroAnimation(){
 			introAnimationPosition -= 20;
-			trace(introAnimationPosition);
 			for (var y:int = 0; y < 10; y++) {
 				for (var x:int = 0; x < 10; x++) {
 					if (introAnimationPosition > -1000){

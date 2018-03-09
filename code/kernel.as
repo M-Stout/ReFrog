@@ -41,7 +41,7 @@
 			
 			GenerateLevel();
 		
-			playerObject = new player();
+			playerObject = new player(stage);
 			entityList.push(playerObject);
 			stage.addChild(playerObject);
 			

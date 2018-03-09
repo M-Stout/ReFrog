@@ -59,6 +59,10 @@
 				moving = false;
 			}
 			
+			possessed.shadowObject.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).x;
+			possessed.shadowObject.y = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).y;
+			possessed.shadowObject.alpha = (currentHeight/maxBounceHeight);
+			
 			//set visual position to isometric perspective
 			possessed.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).x;
 			possessed.y = kernel.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).y;

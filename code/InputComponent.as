@@ -9,6 +9,7 @@
 		var right: Boolean = false;
 		var up: Boolean = false;
 		var down: Boolean = false;
+		var anyKeyDown: Boolean = false;
 
 		public function InputComponent(pObject) {
 			// constructor code
@@ -18,32 +19,32 @@
 		
 		public function KeyDown(e:KeyboardEvent){
 			if (e.keyCode == 87){//w
-				if (!up){
-					possessed.movementComponent.Move(0, 1);
+				if (!up && !anyKeyDown){
+					possessed.movementComponent.Move(0, 1, 40);
 					possessed.gotoAndStop(1);
 				}
-				up = true;
+				up = true; anyKeyDown = true;
 			}
 			if (e.keyCode == 65){//a
-				if (!left){
-					possessed.movementComponent.Move(-1, 0);
+				if (!left && !anyKeyDown){
+					possessed.movementComponent.Move(-1, 0, 40);
 					possessed.gotoAndStop(2);
 				}
-				left = true;
+				left = true; anyKeyDown = true;
 			}
 			if (e.keyCode == 83){//s
-				if (!down){
-					possessed.movementComponent.Move(0, -1);
+				if (!down && !anyKeyDown){
+					possessed.movementComponent.Move(0, -1, 40);
 					possessed.gotoAndStop(3);
 				}
-				down = true;
+				down = true; anyKeyDown = true;
 			}
 			if (e.keyCode == 68){//d
-				if (!right){
-					possessed.movementComponent.Move(1, 0);
+				if (!right && !anyKeyDown){
+					possessed.movementComponent.Move(1, 0, 40);
 					possessed.gotoAndStop(4);
 				}
-				right = true;
+				right = true; anyKeyDown = true;
 			}
 		}
 		
@@ -59,6 +60,9 @@
 			}
 			if (e.keyCode == 68){//d
 				right = false;
+			}
+			if (!up && !left && !down && !right){
+				anyKeyDown = false;
 			}
 		}
 		

@@ -14,6 +14,10 @@
 		var introAnimationPosition: Number = 1000;
 		var introDirection: Number = Math.round(Math.random()*4);
 		
+		public var entityList = [];
+		
+		var playerObject;
+		
 		public function kernel() {
 			// constructor code
 			
@@ -36,6 +40,10 @@
 			}
 			
 			GenerateLevel();
+		
+			playerObject = new player();
+			entityList.push(playerObject);
+			stage.addChild(playerObject);
 			
 			//game timer
 			var _period:Number = 1000/60;
@@ -43,51 +51,36 @@
 			
 			gameTimer.addEventListener(TimerEvent.TIMER, Update);
 			gameTimer.start();
+			
+			stage.addEventListener(KeyboardEvent.KEY_DOWN, KeyDown);
+			stage.addEventListener(KeyboardEvent.KEY_UP, KeyUp);
+		}
+		
+		function KeyDown(e:KeyboardEvent){
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
+				if(entityList[entityIndex].inputComponent){
+					playerObject.inputComponent.KeyDown(e);
+				}
+			}
+		}
+		function KeyUp(e:KeyboardEvent){
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
+				if(entityList[entityIndex].inputComponent){
+					playerObject.inputComponent.KeyUp(e);
+				}
+			}
 		}
 		
 		function Update(e:Event){
 			
 			if (introPlaying){
-				introAnimationPosition -= 20;
-				trace(introAnimationPosition);
-				for (var y:int = 0; y < 10; y++) {
-					for (var x:int = 0; x < 10; x++) {
-						if (introAnimationPosition > -1000){
-							if (tiles[x][y].y < tiles[x][y].properPosition.y){
-								switch (introDirection){
-									case 0:
-										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-y*100);
-										break;
-									case 1:
-										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (y*100);
-										break;
-									case 2:
-										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-x*100);
-										break;
-									default:
-										tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (x*100);
-										break;
-								}
-							} else {
-								tiles[x][y].y = tiles[x][y].properPosition.y;
-							}
-						}
-						else {
-							for (var y:int = 0; y < 10; y++) {
-								for (var x:int = 0; x < 10; x++) {
-									tiles[x][y].y = tiles[x][y].properPosition.y;
-								}
-							}
-							introPlaying = false;									
-						}
-					}
-				}
+				IntroAnimation();
 			}
 			
-		}
-		
-		function ToIsometric(inputX: Number, inputY: Number, yOffset: Number = 0){
-			return new Vector3D(50+(inputX*0.6 + inputY*0.6)*100, (stage.stageHeight-400)-(inputX*-0.35 + inputY*0.35)*100, 0);
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
+				entityList[entityIndex].Update();
+			}
+			
 		}
 		
 		function PlaceTile(x: Number, y: Number, tileTypeName: String = "grassTile"){
@@ -149,7 +142,48 @@
 			}
 		}
 		
-		function RandomNumberBetween(Min: Number, Max: Number){
+		function IntroAnimation(){
+			introAnimationPosition -= 20;
+			trace(introAnimationPosition);
+			for (var y:int = 0; y < 10; y++) {
+				for (var x:int = 0; x < 10; x++) {
+					if (introAnimationPosition > -1000){
+						if (tiles[x][y].y < tiles[x][y].properPosition.y){
+							switch (introDirection){
+								case 0:
+									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-y*100);
+									break;
+								case 1:
+									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (y*100);
+									break;
+								case 2:
+									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-x*100);
+									break;
+								default:
+									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (x*100);
+									break;
+							}
+						} else {
+							tiles[x][y].y = tiles[x][y].properPosition.y;
+						}
+					}
+					else {
+						for (var y:int = 0; y < 10; y++) {
+							for (var x:int = 0; x < 10; x++) {
+								tiles[x][y].y = tiles[x][y].properPosition.y;
+							}
+						}
+						introPlaying = false;									
+					}
+				}
+			}
+		}
+		
+		static function ToIsometric(inputX: Number, inputY: Number, yOffset: Number = 0){
+			return new Vector3D(100+(inputX*0.6 + inputY*0.6)*100, ((720-340)-(inputX*-0.35 + inputY*0.35)*100) -yOffset, 0);
+		}
+		
+		static function RandomNumberBetween(Min: Number, Max: Number){
 			return Math.round(Math.random()*(Max-Min))+Min;
 		}
 		

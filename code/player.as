@@ -2,6 +2,7 @@
 	
 	import flash.display.MovieClip;
 	import flash.display.Shader;
+	import flash.geom.Point;
 	
 	
 	
@@ -11,6 +12,7 @@
 		
 		var movementComponent;
 		var inputComponent;
+		var collisionComponent;
 		
 		var shadowObject;
 		
@@ -22,6 +24,7 @@
 			mStage = pStage;
 			movementComponent = new MovementComponent(this);
 			inputComponent = new InputComponent(this);
+			collisionComponent = new CollisionComponent(this);
 			gotoAndStop(1);
 			CreateShadow();
 		}
@@ -29,6 +32,7 @@
 		function Update(){
 			movementComponent.Update();
 			inputComponent.Update();
+			collisionComponent.Update();
 
 			if (introPlaying){
 				this.alpha = introAnimationPosition;
@@ -38,6 +42,18 @@
 					this.alpha = 1;
 				}
 			}
+		}
+		
+		function Delete(){
+			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
+			mStage.removeChild(this);
+			
+			mStage.removeChild(shadowObject);
+			shadowObject = null;
+			
+			movementComponent = null;
+			inputComponent = null;
+			collisionComponent = null;
 		}
 		
 		function CreateShadow(){

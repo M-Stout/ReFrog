@@ -8,13 +8,13 @@
 	
 	public class kernel extends MovieClip {
 		
-		public var tiles = [];
+		static var tiles = [];
 		
 		var introPlaying: Boolean = true;
 		var introAnimationPosition: Number = 1000;
 		var introDirection: Number = Math.round(Math.random()*4);
 		
-		public var entityList = [];
+		static var entityList = [];
 		
 		var playerObject;
 		
@@ -92,6 +92,8 @@
 			tiles[x][y] = new tileTypeClass();	
 			tiles[x][y].x = ToIsometric(x, y).x;
 			tiles[x][y].y = ToIsometric(x, y).y;
+			
+			tiles[x][y].typeOfTile = tileTypeName;
 			
 			tiles[x][y].SetProperPosition();
 			tiles[x][y].y -= 1000;

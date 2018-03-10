@@ -6,6 +6,7 @@
 	public class Tile extends MovieClip {
 		
 		public var properPosition: Vector3D;
+		var typeOfTile: String;
 		
 		public function Tile() {
 			// constructor code

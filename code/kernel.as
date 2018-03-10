@@ -16,7 +16,10 @@
 		
 		static var entityList = [];
 		
-		var playerObject;
+		static var riverPositions = [];
+		var logSpawnCountdown = 200;
+		
+		static var playerObject;
 		
 		public function kernel() {
 			// constructor code
@@ -58,14 +61,14 @@
 		
 		function KeyDown(e:KeyboardEvent){
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
-				if(entityList[entityIndex].inputComponent){
+				if(playerObject.inputComponent){
 					playerObject.inputComponent.KeyDown(e);
 				}
 			}
 		}
 		function KeyUp(e:KeyboardEvent){
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
-				if(entityList[entityIndex].inputComponent){
+				if(playerObject.inputComponent){
 					playerObject.inputComponent.KeyUp(e);
 				}
 			}
@@ -79,6 +82,14 @@
 			
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
 				entityList[entityIndex].Update();
+			}
+			
+			logSpawnCountdown++;
+			if (logSpawnCountdown > (5*60)){ //5 seconds at 60fps
+				logSpawnCountdown = 0;
+				for (var riverIndex:int = 0; riverIndex < riverPositions.length; riverIndex++) {
+					spawnLog(riverPositions[riverIndex]);
+				}
 			}
 			
 		}
@@ -104,8 +115,20 @@
 		}
 		
 		function PlaceRiver(y: Number){
+			riverPositions.push(y);
 			for (var x:int = 0; x < 10; x++) {
 				PlaceTile(x, y, "waterTile");
+			}
+		}
+		
+		function spawnLog(riverPosition) {
+			var spawningLog = new log(riverPosition);
+			stage.addChild(spawningLog);
+			entityList.push(spawningLog);
+			
+			if (playerObject){
+				stage.setChildIndex(playerObject, stage.numChildren-1);
+				stage.setChildIndex(playerObject.shadowObject, stage.numChildren-2);
 			}
 		}
 		
@@ -117,7 +140,7 @@
 				}
 			}
 			
-			for (var y:int = 2; y < 8; y++) {//random between 2 and 7
+			/*for (var y:int = 2; y < 8; y++) {//random between 2 and 7
 				if(Math.random()>0.5){
 					if(Math.random()>0.5){
 						PlaceRiver(y);
@@ -125,11 +148,11 @@
 						//place road :)
 					}
 				}
-				
+			}*/
+			
+			for (var r:int = 0; r < numberOfRivers; r++) {
+				PlaceRiver(RandomNumberBetween(2, 7)); //places random rivers between y 2 and 7
 			}
-			//for (var r:int = 0; r < numberOfRivers; r++) {
-			//	PlaceRiver(RandomNumberBetween(2, 7)); //places random rivers between y 2 and 7
-			//}
 			
 			ArrangeTiles();
 		}
@@ -181,7 +204,7 @@
 		}
 		
 		static function ToIsometric(inputX: Number, inputY: Number, yOffset: Number = 0){
-			return new Vector3D(100+(inputX*0.6 + inputY*0.6)*100, ((720-340)-(inputX*-0.35 + inputY*0.35)*100) -yOffset, 0);
+			return new Vector3D(100+(inputX*0.6 + inputY*0.6)*100, ((720-360)-(inputX*-0.35 + inputY*0.35)*100) -yOffset, 0);
 		}
 		
 		static function RandomNumberBetween(Min: Number, Max: Number){

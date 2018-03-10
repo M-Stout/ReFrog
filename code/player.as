@@ -8,6 +8,8 @@
 	
 	public class player extends MovieClip {
 		
+		var typeOfEntity = "player";
+		
 		var mStage;
 		
 		var movementComponent;
@@ -45,6 +47,7 @@
 		}
 		
 		function Delete(){
+			kernel.playerObject = null;
 			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
 			mStage.removeChild(this);
 			

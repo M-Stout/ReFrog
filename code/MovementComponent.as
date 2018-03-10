@@ -32,11 +32,7 @@
 				targetPosition.x += xInput;
 				targetPosition.y += yInput;
 				
-				//bounding x and y within 0 - 9
-				currentPosition.x = Math.min(9, Math.max(currentPosition.x, 0));
-				currentPosition.y = Math.min(9, Math.max(currentPosition.y, 0));
-				targetPosition.x = Math.min(9, Math.max(targetPosition.x, 0));
-				targetPosition.y = Math.min(9, Math.max(targetPosition.y, 0));
+				
 				
 				maxBounceHeight = pBounceHeight;
 			}
@@ -48,20 +44,29 @@
 			currentPosition.x += -(currentPosition.x - targetPosition.x)/5;
 			currentPosition.y += -(currentPosition.y - targetPosition.y)/5;
 			
+			//bounding x and y within 0 - 9t
+			currentPosition.x = Math.min(9, Math.max(currentPosition.x, 0));
+			currentPosition.y = Math.min(9, Math.max(currentPosition.y, 0));
+			targetPosition.x = Math.min(9, Math.max(targetPosition.x, 0));
+			targetPosition.y = Math.min(9, Math.max(targetPosition.y, 0));
+			
 			if (Vector3D.distance(fromPosition, targetPosition) < 0.1){
 				currentHeight = 0;
 			} else {
-				//this calculates an arc in the air between two points (fromPosition and targetPosition)
-				currentHeight = Math.abs( Math.sin((Vector3D.distance(currentPosition, targetPosition) - 0) * 3.14) / (Vector3D.distance(fromPosition, targetPosition) - 0) )*maxBounceHeight;
+				if(moving){
+					//this calculates an arc in the air between two points (fromPosition and targetPosition)
+					currentHeight = Math.abs( Math.sin((Vector3D.distance(currentPosition, targetPosition) - 0) * 3.14) / (Vector3D.distance(fromPosition, targetPosition) - 0) )*maxBounceHeight;
+				}
 			}
 			
 			if (Vector3D.distance(currentPosition, targetPosition) < 0.1){
 				moving = false;
+				currentHeight = 0;
 			}
 			
 			possessed.shadowObject.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).x;
 			possessed.shadowObject.y = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).y;
-			possessed.shadowObject.alpha = (currentHeight/maxBounceHeight);
+			possessed.shadowObject.alpha = possessed.alpha*(currentHeight/maxBounceHeight);
 			
 			//set visual position to isometric perspective
 			possessed.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).x;

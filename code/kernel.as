@@ -21,6 +21,10 @@
 		
 		static var playerObject;
 		
+		//game timer
+		static var _period:Number = 1000/60;
+		static var gameTimer:Timer = new Timer(_period);
+		
 		public function kernel() {
 			// constructor code
 			
@@ -48,10 +52,6 @@
 			entityList.push(playerObject);
 			stage.addChild(playerObject);
 			
-			//game timer
-			var _period:Number = 1000/60;
-			var gameTimer:Timer = new Timer(_period);
-			
 			gameTimer.addEventListener(TimerEvent.TIMER, Update);
 			gameTimer.start();
 			
@@ -61,15 +61,19 @@
 		
 		function KeyDown(e:KeyboardEvent){
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
-				if(playerObject.inputComponent){
-					playerObject.inputComponent.KeyDown(e);
+				if (playerObject){
+					if(playerObject.inputComponent){
+						playerObject.inputComponent.KeyDown(e);
+					}
 				}
 			}
 		}
 		function KeyUp(e:KeyboardEvent){
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
-				if(playerObject.inputComponent){
-					playerObject.inputComponent.KeyUp(e);
+				if (playerObject){
+					if(playerObject.inputComponent){
+						playerObject.inputComponent.KeyUp(e);
+					}
 				}
 			}
 		}

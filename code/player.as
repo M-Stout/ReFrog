@@ -3,7 +3,7 @@
 	import flash.display.MovieClip;
 	import flash.display.Shader;
 	import flash.geom.Point;
-	
+	import flash.events.*;	
 	
 	
 	public class player extends MovieClip {
@@ -47,6 +47,9 @@
 		}
 		
 		function Delete(){
+			mStage.addChild(new gameOverScreen()); //add game over
+			kernel.gameTimer.stop(); //stop kernel update
+			
 			kernel.playerObject = null;
 			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
 			mStage.removeChild(this);

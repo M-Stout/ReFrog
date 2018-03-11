@@ -60,6 +60,9 @@
 		}
 		
 		function KeyDown(e:KeyboardEvent){
+			if (e.keyCode == 82){//r
+				ResetLevel();
+			}
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
 				if (playerObject){
 					if(playerObject.inputComponent){
@@ -159,6 +162,33 @@
 			}
 			
 			ArrangeTiles();
+		}
+		
+		function ResetLevel(){
+			
+			introPlaying = true;
+			introAnimationPosition = 1000;
+			introDirection = Math.round(Math.random()*4);
+			
+			playerObject.introPlaying = true;
+			playerObject.introAnimationPosition = -1;
+			
+			playerObject.movementComponent.currentPosition = new Vector3D(kernel.RandomNumberBetween(1, 8), 0, 0);
+			playerObject.movementComponent.fromPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, playerObject.movementComponent.currentPosition.y, 0);
+			playerObject.movementComponent.targetPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, 0, 0);
+			
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
+				stage.removeChild(entityList[entityIndex]);
+			}
+			entityList.splice(0);
+			entityList.push(playerObject);
+			stage.addChild(playerObject);
+			
+			riverPositions.splice(0);
+			logSpawnCountdown = 200;
+			
+			GenerateLevel();
+			
 		}
 		
 		function ArrangeTiles(){

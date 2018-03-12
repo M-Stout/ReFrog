@@ -16,7 +16,7 @@
 		
 		public function Update(){
 				
-			if (kernel.tiles[Math.round(possessed.movementComponent.currentPosition.x)][Math.round(possessed.movementComponent.currentPosition.y)].typeOfTile == "waterTile"){ //if touching water
+			if (checkTile() == "waterTile"){ //if touching water
 				if(checkTouchingLog()){ //if touching log
 					possessed.movementComponent.targetPosition.x += 0.02; //move with log
 				} else { //else die
@@ -29,6 +29,10 @@
 				}
 			}
 			
+		}
+		
+		function checkTile():String{
+			return kernel.tiles[Math.round(possessed.movementComponent.currentPosition.x)][Math.round(possessed.movementComponent.currentPosition.y)].typeOfTile;
 		}
 		
 		function checkTouchingLog():Boolean{

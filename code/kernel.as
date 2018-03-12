@@ -8,6 +8,8 @@
 	
 	public class kernel extends MovieClip {
 		
+		public static var instance:kernel;
+		
 		static var tiles = []; //this array is tiles
 		
 		var introPlaying: Boolean = true;
@@ -29,6 +31,8 @@
 		
 		public function kernel() {
 			// constructor code
+			
+			instance = this;
 			
 			trace("Hello World (Kernel Constructor)");
 			
@@ -172,7 +176,13 @@
 				PlaceRiver(RandomNumberBetween(2, 7)); //places random rivers between y 2 and 7
 			}
 			
+			PlaceTile(RandomNumberBetween(2, 7), 9, "finishTile");
+			
 			ArrangeTiles();
+		}
+		
+		function FinishLevel(){
+			ResetLevel();
 		}
 		
 		function ResetLevel(){

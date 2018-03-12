@@ -28,6 +28,11 @@
 					possessed.Delete();
 				}
 			}
+			if (checkTile() == "finishTile"){
+				if (possessed.typeOfEntity == "player") {
+					kernel.instance.FinishLevel();
+				}
+			}
 			
 		}
 		

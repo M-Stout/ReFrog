@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="tiles/finishTile" itemID="5aa6892b-00000025" linkageExportForAS="true" linkageClassName="finishTile" lastModified="1520863608">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="tiles/finishTile" itemID="5aa6892b-00000025" linkageExportForAS="true" linkageClassName="finishTile" lastModified="1520868882">
   <timeline>
     <DOMTimeline name="finishTile">
       <layers>
@@ -6,7 +6,7 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMBitmapInstance libraryItemName="tiles/finishTile.png">
+                <DOMBitmapInstance libraryItemName="finishTile.png">
                   <matrix>
                     <Matrix tx="-600" ty="-349"/>
                   </matrix>

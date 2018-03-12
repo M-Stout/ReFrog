@@ -19,6 +19,7 @@
 		static var entityList = [];
 		
 		static var riverPositions = [];
+		static var roadPositions = [];
 		var logSpawnCountdown = 200;
 		
 		static var playerObject;
@@ -136,10 +137,19 @@
 			stage.addChild(tiles[x][y]);
 		}
 		
+		//River Placer
 		function PlaceRiver(y: Number){
 			riverPositions.push(y);
 			for (var x:int = 0; x < 10; x++) {
 				PlaceTile(x, y, "waterTile");
+			}
+		}
+		
+		// Road Placer
+		function PlaceRoad(y: Number){
+			roadPositions.push(y);
+			for (var x:int = 0; x < 10; x++) {
+				PlaceTile(x, y, "roadTile");
 			}
 		}
 		
@@ -156,6 +166,8 @@
 		
 		function GenerateLevel(){
 			var numberOfRivers: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
+			var numberOfRoads: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
+			
 			for (var y:int = 0; y < 10; y++) {
 				for (var x:int = 0; x < 10; x++) {
 					PlaceTile(x, y, "grassTile");
@@ -173,7 +185,29 @@
 			}*/
 			
 			for (var r:int = 0; r < numberOfRivers; r++) {
-				PlaceRiver(RandomNumberBetween(2, 7)); //places random rivers between y 2 and 7
+				
+				//places random rivers between y 2 and 7
+				while (true) {
+					var riverCheck = RandomNumberBetween(5, 7);
+					if (riverPositions.indexOf(riverCheck) == -1 && roadPositions.indexOf(riverCheck) == -1) { //if river position not already used
+						PlaceRiver(riverCheck);
+						break;
+					}
+				}
+				
+			}
+			
+			for (var j:int = 0; j < numberOfRoads; j++) {
+				
+				//places random roads between y 2 and 7
+				while (true) {
+					var roadCheck = RandomNumberBetween(2, 4);
+					if (riverPositions.indexOf(roadCheck) == -1 && roadPositions.indexOf(roadCheck) == -1) { //if road position not already used
+						PlaceRoad(roadCheck);
+						break;
+					}
+				}
+				
 			}
 			
 			PlaceTile(RandomNumberBetween(2, 7), 9, "finishTile");
@@ -207,6 +241,8 @@
 			
 			riverPositions.splice(0);
 			logSpawnCountdown = 200;
+			
+			roadPositions.splice(0);
 			
 			GenerateLevel();
 			

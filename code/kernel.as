@@ -21,6 +21,8 @@
 		
 		static var playerObject;
 		
+		static var isPaused = false;
+		
 		//game timer
 		static var _period:Number = 1000/60;
 		static var gameTimer:Timer = new Timer(_period);
@@ -68,6 +70,15 @@
 					if(playerObject.inputComponent){
 						playerObject.inputComponent.KeyDown(e);
 					}
+				}
+			}
+			if (e.keyCode == 27){
+				if (isPaused){
+					isPaused = false;
+					gameTimer.start();
+				} else {
+					isPaused = true;
+					gameTimer.stop();
 				}
 			}
 		}

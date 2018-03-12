@@ -8,7 +8,7 @@
 	
 	public class kernel extends MovieClip {
 		
-		static var tiles = [];
+		static var tiles = []; //this array is tiles
 		
 		var introPlaying: Boolean = true;
 		var introAnimationPosition: Number = 1000;

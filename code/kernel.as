@@ -19,6 +19,7 @@
 		static var entityList = [];
 		
 		static var riverPositions = [];
+		var carSpawnCountdown = 60;
 		static var roadPositions = [];
 		var logSpawnCountdown = 200;
 		
@@ -114,6 +115,13 @@
 					spawnLog(riverPositions[riverIndex]);
 				}
 			}
+			carSpawnCountdown++;
+			if (carSpawnCountdown > (2*60)){ //5 seconds at 60fps
+				carSpawnCountdown = 0;
+				for (var roadIndex:int = 0; roadIndex < roadPositions.length; roadIndex++) {
+					spawnCar(roadPositions[roadIndex]);
+				}
+			}
 			
 		}
 		
@@ -157,6 +165,17 @@
 			var spawningLog = new log(riverPosition);
 			stage.addChild(spawningLog);
 			entityList.push(spawningLog);
+			
+			if (playerObject){
+				stage.setChildIndex(playerObject, stage.numChildren-1);
+				stage.setChildIndex(playerObject.shadowObject, stage.numChildren-2);
+			}
+		}
+		
+		function spawnCar(roadPosition) {
+			var spawningCar = new car(roadPosition);
+			stage.addChild(spawningCar);
+			entityList.push(spawningCar);
 			
 			if (playerObject){
 				stage.setChildIndex(playerObject, stage.numChildren-1);

@@ -1,0 +1,21 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="shadow" itemID="5aa30660-000001e7" linkageExportForAS="true" linkageClassName="shadow" lastModified="1520699268">
+  <timeline>
+    <DOMTimeline name="shadow">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMBitmapInstance libraryItemName="isometricShadow.png">
+                  <matrix>
+                    <Matrix a="0.186660766601563" d="0.185989379882813" tx="-12.75" ty="-7.15"/>
+                  </matrix>
+                </DOMBitmapInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

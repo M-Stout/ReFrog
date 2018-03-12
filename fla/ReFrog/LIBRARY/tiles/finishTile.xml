@@ -6,7 +6,7 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMBitmapInstance libraryItemName="finishTile.png">
+                <DOMBitmapInstance libraryItemName="tiles/finishTile.png">
                   <matrix>
                     <Matrix tx="-600" ty="-349"/>
                   </matrix>

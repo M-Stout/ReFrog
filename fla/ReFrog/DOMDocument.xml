@@ -5,20 +5,20 @@
           <DOMFolderItem name="tiles" itemID="5aa2b3a3-0000020b" isExpanded="true"/>
      </folders>
      <media>
-          <DOMBitmapItem name="finishTile.png" itemID="5aa69e14-0000002b" sourceExternalFilepath="./LIBRARY/finishTile.png" sourceLastImported="1520868800" externalFileSize="80453" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="finishTile.png" bitmapDataHRef="M 14 1520868862.dat" frameRight="24000" frameBottom="22880"/>
-          <DOMBitmapItem name="tiles/grassTile.png" itemID="5a941178-00000007" sourceExternalFilepath="./LIBRARY/tiles/grassTile.png" sourceLastImported="1519653202" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="tiles/grassTile.png" bitmapDataHRef="M 1 1519653240.dat" frameRight="24000" frameBottom="22880"/>
+          <DOMBitmapItem name="tiles/finishTile.png" itemID="5aa69e14-0000002b" sourceExternalFilepath="./LIBRARY/finishTile.png" sourceLastImported="1520869375" externalFileSize="80453" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="tiles/finishTile.png" bitmapDataHRef="M 14 1520868862.dat" frameRight="24000" frameBottom="22880"/>
+          <DOMBitmapItem name="tiles/grassTile.png" itemID="5aa6a076-00000031" sourceExternalFilepath="./LIBRARY/tiles/grassTile.png" sourceLastImported="1520869268" externalFileSize="367053" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="tiles/grassTile.png" bitmapDataHRef="M 15 1520869444.dat" frameRight="24000" frameBottom="22880"/>
           <DOMBitmapItem name="isometricShadow.png" itemID="5aa30649-000001e5" sourceExternalFilepath="./LIBRARY/isometricShadow.png" sourceLastImported="1520633366" externalFileCRC32="2385501599" externalFileSize="9876" originalCompressionType="lossless" quality="50" href="isometricShadow.png" bitmapDataHRef="M 7 1520633417.dat" frameRight="2680" frameBottom="1560"/>
           <DOMBitmapItem name="log.png" itemID="5aa40179-000001e8" sourceExternalFilepath="./LIBRARY/log.png" sourceLastImported="1520695511" externalFileCRC32="3327856159" externalFileSize="40672" originalCompressionType="lossless" quality="50" href="log.png" bitmapDataHRef="M 12 1520697721.dat" frameRight="6480" frameBottom="3340"/>
           <DOMBitmapItem name="rabbit sprites/rabbitA.png" itemID="5aa2b060-000001f1" sourceExternalFilepath="./LIBRARY/rabbit sprites/rabbitA.png" sourceLastImported="1520609835" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="rabbit sprites/rabbitA.png" bitmapDataHRef="M 6 1520611424.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="rabbit sprites/rabbitD.png" itemID="5aa2b060-000001e7" sourceExternalFilepath="./LIBRARY/rabbit sprites/rabbitD.png" sourceLastImported="1520609854" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="rabbit sprites/rabbitD.png" bitmapDataHRef="M 4 1520611424.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="rabbit sprites/rabbitS.png" itemID="5aa2b060-000001ec" sourceExternalFilepath="./LIBRARY/rabbit sprites/rabbitS.png" sourceLastImported="1520609847" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="rabbit sprites/rabbitS.png" bitmapDataHRef="M 5 1520611424.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="rabbit sprites/rabbitW.png" itemID="5aa2b013-000001db" sourceExternalFilepath="./LIBRARY/rabbit sprites/rabbitW.png" sourceLastImported="1520609842" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="rabbit sprites/rabbitW.png" bitmapDataHRef="M 3 1520611347.dat" frameRight="640" frameBottom="640"/>
-          <DOMBitmapItem name="tiles/roadTile.png" itemID="5aa69c47-0000002a" sourceExternalFilepath="C:/Users/stom1_17/Documents/GitHub/ReFrog/fla/ReFrog/LIBRARY/tiles/roadTile.png" sourceLastImported="1520868845" externalFileSize="66321" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="tiles/roadTile.png" bitmapDataHRef="M 14 1520868368.dat" frameRight="24000" frameBottom="22880"/>
+          <DOMBitmapItem name="tiles/roadTile.png" itemID="5aa69c47-0000002a" sourceExternalFilepath="C:/Users/stom1_17/Documents/GitHub/ReFrog/fla/ReFrog/LIBRARY/tiles/roadTile.png" sourceLastImported="1520869376" externalFileSize="66321" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="tiles/roadTile.png" bitmapDataHRef="M 14 1520868368.dat" frameRight="24000" frameBottom="22880"/>
           <DOMBitmapItem name="splash/splash0.png" itemID="5aa3c732-000001f4" sourceExternalFilepath="./LIBRARY/splash/splash0.png" sourceLastImported="1520682770" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="splash/splash0.png" bitmapDataHRef="M 10 1520682802.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="splash/splash1.png" itemID="5aa3c732-00000203" sourceExternalFilepath="./LIBRARY/splash/splash1.png" sourceLastImported="1520682774" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="splash/splash1.png" bitmapDataHRef="M 13 1520682802.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="splash/splash2.png" itemID="5aa3c732-000001fe" sourceExternalFilepath="./LIBRARY/splash/splash2.png" sourceLastImported="1520682778" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="splash/splash2.png" bitmapDataHRef="M 12 1520682802.dat" frameRight="640" frameBottom="640"/>
           <DOMBitmapItem name="splash/splash3.png" itemID="5aa3c732-000001f9" sourceExternalFilepath="./LIBRARY/splash/splash3.png" sourceLastImported="1520682783" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="splash/splash3.png" bitmapDataHRef="M 11 1520682802.dat" frameRight="640" frameBottom="640"/>
-          <DOMBitmapItem name="tiles/waterTile.png" itemID="5aa68993-0000002a" sourceExternalFilepath="./LIBRARY/tiles/waterTile.png" sourceLastImported="1520863635" allowSmoothing="true" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="tiles/waterTile.png" bitmapDataHRef="M 2 1519657653.dat" frameRight="24000" frameBottom="22880"/>
+          <DOMBitmapItem name="tiles/waterTile.png" itemID="5aa6a076-00000032" sourceExternalFilepath="./LIBRARY/tiles/waterTile.png" sourceLastImported="1520869268" externalFileSize="633857" allowSmoothing="true" originalCompressionType="lossless" quality="50" href="tiles/waterTile.png" bitmapDataHRef="M 16 1520869451.dat" frameRight="24000" frameBottom="22880"/>
      </media>
      <symbols>
           <Include href="gameOverScreen.xml" itemID="5aa59913-000001ea" lastModified="1520862388"/>
@@ -27,9 +27,9 @@
           <Include href="shadow.xml" itemID="5aa30660-000001e7" lastModified="1520699268"/>
           <Include href="splash/splash.xml" itemID="5aa3c769-0000020a" lastModified="1520699293"/>
           <Include href="tiles/finishTile.xml" itemID="5aa6892b-00000025" lastModified="1520868882"/>
-          <Include href="tiles/grassTile.xml" itemID="5a9411aa-00000009" lastModified="1520868874"/>
+          <Include href="tiles/grassTile.xml" itemID="5a9411aa-00000009" lastModified="1520869447"/>
           <Include href="tiles/roadTile.xml" itemID="5aa69c06-00000023" lastModified="1520868380"/>
-          <Include href="tiles/waterTile.xml" itemID="5a9422c4-0000000c" lastModified="1520699206"/>
+          <Include href="tiles/waterTile.xml" itemID="5a9422c4-0000000c" lastModified="1520869454"/>
      </symbols>
      <timelines>
           <DOMTimeline name="Scene 1">
@@ -88,6 +88,9 @@
      </persistentData>
      <PrinterSettings/>
      <publishHistory>
+          <PublishItem publishSize="240905" publishTime="1520869482" publishDebug="true"/>
+          <PublishItem publishSize="240891" publishTime="1520869456" publishDebug="true"/>
+          <PublishItem publishSize="218022" publishTime="1520869383" publishDebug="true"/>
           <PublishItem publishSize="217988" publishTime="1520868472" publishDebug="true"/>
           <PublishItem publishSize="217982" publishTime="1520868399" publishDebug="true"/>
           <PublishItem publishSize="180018" publishTime="1520868314" publishDebug="true"/>
@@ -105,8 +108,5 @@
           <PublishItem publishSize="109903" publishTime="1520802540" publishDebug="true"/>
           <PublishItem publishSize="109906" publishTime="1520802521" publishDebug="true"/>
           <PublishItem publishSize="109906" publishTime="1520802448" publishDebug="true"/>
-          <PublishItem publishSize="109906" publishTime="1520802441" publishDebug="true"/>
-          <PublishItem publishSize="109906" publishTime="1520802415" publishDebug="true"/>
-          <PublishItem publishSize="109906" publishTime="1520802388" publishDebug="true"/>
      </publishHistory>
 </DOMDocument>

@@ -193,40 +193,26 @@
 				}
 			}
 			
-			/*for (var y:int = 2; y < 8; y++) {//random between 2 and 7
-				if(Math.random()>0.5){
-					if(Math.random()>0.5){
-						PlaceRiver(y);
-					} else {
-						//place road :)
-					}
-				}
-			}*/
-			
 			for (var r:int = 0; r < numberOfRivers; r++) {
-				
 				//places random rivers between y 2 and 7
 				while (true) {
-					var riverCheck = RandomNumberBetween(5, 7);
+					var riverCheck = RandomNumberBetween(2, 7);
 					if (riverPositions.indexOf(riverCheck) == -1 && roadPositions.indexOf(riverCheck) == -1) { //if river position not already used
 						PlaceRiver(riverCheck);
 						break;
 					}
 				}
-				
 			}
 			
 			for (var j:int = 0; j < numberOfRoads; j++) {
-				
 				//places random roads between y 2 and 7
 				while (true) {
-					var roadCheck = RandomNumberBetween(2, 4);
+					var roadCheck = RandomNumberBetween(2, 7);
 					if (riverPositions.indexOf(roadCheck) == -1 && roadPositions.indexOf(roadCheck) == -1) { //if road position not already used
 						PlaceRoad(roadCheck);
 						break;
 					}
 				}
-				
 			}
 			
 			PlaceTile(RandomNumberBetween(2, 7), 9, "finishTile");

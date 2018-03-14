@@ -68,17 +68,19 @@
 		}
 		
 		function KeyDown(e:KeyboardEvent){
-			if (e.keyCode == 82){//r
-				ResetLevel();
-			}
-			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
-				if (playerObject){
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) { //run keydown in inputcomponents
+				if (playerObject){ //there's only one entity with an input component: the player
 					if(playerObject.inputComponent){
 						playerObject.inputComponent.KeyDown(e);
 					}
 				}
 			}
-			if (e.keyCode == 27){
+			
+			if (e.keyCode == 82){//r
+				ResetLevel();
+			}
+			
+			if (e.keyCode == 80){ //p for pause
 				if (isPaused){
 					isPaused = false;
 					gameTimer.start();
@@ -89,8 +91,8 @@
 			}
 		}
 		function KeyUp(e:KeyboardEvent){
-			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
-				if (playerObject){
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {//run keyup in inputcomponents
+				if (playerObject){ //there's only one entity with an input component: the player
 					if(playerObject.inputComponent){
 						playerObject.inputComponent.KeyUp(e);
 					}
@@ -222,6 +224,10 @@
 		
 		function FinishLevel(){
 			ResetLevel();
+			gameTimer.stop(); //pause
+			//show score screen
+			//wait for key press
+			gameTimer.start(); //unpause
 		}
 		
 		function ResetLevel(){

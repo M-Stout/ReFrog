@@ -305,6 +305,11 @@
 			}
 		}
 		
+		function RemoveAllInputListeners(){
+			stage.removeEventListener(KeyboardEvent.KEY_DOWN, KeyDown); //stops all key inputs
+			stage.removeEventListener(KeyboardEvent.KEY_UP, KeyUp);
+		}
+		
 		static function ToIsometric(inputX: Number, inputY: Number, yOffset: Number = 0){
 			return new Vector3D(100+(inputX*0.6 + inputY*0.6)*100, ((720-360)-(inputX*-0.35 + inputY*0.35)*100) -yOffset, 0);
 		}

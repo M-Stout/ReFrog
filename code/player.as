@@ -35,7 +35,7 @@
 			movementComponent.Update();
 			inputComponent.Update();
 			collisionComponent.Update();
-
+			
 			if (introPlaying){
 				this.alpha = introAnimationPosition;
 				introAnimationPosition+= 0.02;
@@ -60,6 +60,8 @@
 			movementComponent = null;
 			inputComponent = null;
 			collisionComponent = null;
+			
+			kernel.instance.RemoveAllInputListeners();
 		}
 		
 		function CreateShadow(){

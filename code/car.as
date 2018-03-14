@@ -15,7 +15,7 @@
 		public function car(pRoadPosition: Number) {
 			// constructor code
 			roadPosition = pRoadPosition;
-			xPosition = -1-Math.random()*3;
+			xPosition = -2-Math.random()*3;
 		}
 		
 		function Update(){

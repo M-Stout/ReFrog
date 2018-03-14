@@ -5,6 +5,8 @@
 	import flash.utils.Timer;
 	import flash.geom.Vector3D;
 	import flash.utils.getDefinitionByName;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
 	
 	public class kernel extends MovieClip {
 		
@@ -24,6 +26,10 @@
 		var logSpawnCountdown = 200;
 		
 		static var playerObject;
+		
+		static var cakeNumber;
+		static var scoreTextField;
+		static var scoreScreenBackground;
 		
 		static var isPaused = false;
 		
@@ -60,6 +66,9 @@
 			entityList.push(playerObject);
 			stage.addChild(playerObject);
 			
+			//score screen
+			createScoreScreen();
+			
 			gameTimer.addEventListener(TimerEvent.TIMER, Update);
 			gameTimer.start();
 			
@@ -88,6 +97,12 @@
 					isPaused = true;
 					gameTimer.stop();
 				}
+			}
+			if (scoreScreenBackground.visible) {
+				scoreScreenBackground.visible = false;
+				scoreTextField.visible = false;
+				isPaused = false;
+				gameTimer.start();
 			}
 		}
 		function KeyUp(e:KeyboardEvent){
@@ -224,10 +239,10 @@
 		
 		function FinishLevel(){
 			ResetLevel();
-			gameTimer.stop(); //pause
-			//show score screen
+			//pause
+			showScoreScreen();//show score screen
 			//wait for key press
-			gameTimer.start(); //unpause
+			//unpause
 		}
 		
 		function ResetLevel(){
@@ -267,6 +282,47 @@
 					}
 				}
 			}
+		}
+		
+		function createScoreScreen(){
+			
+			cakeNumber = 0;
+			scoreScreenBackground = new scoreScreen();
+			scoreTextField = new TextField();
+			
+			scoreScreenBackground.x = 0;
+			scoreScreenBackground.y = 0;
+			
+			var textFormat: TextFormat = new TextFormat(); 
+            textFormat.font = "Arial"; 
+            textFormat.color = 0x3366CC; 
+            textFormat.size = 58; 
+			
+			scoreTextField.text = "0 pieces of cake";
+			scoreTextField.x = 90;
+			scoreTextField.y = 210;
+			scoreTextField.width = 1000;
+			scoreTextField.selectable = false;
+			scoreTextField.setTextFormat(textFormat);
+			
+			stage.addChild(scoreScreenBackground);
+			stage.addChild(scoreTextField);
+			
+			scoreTextField.visible = false;
+			scoreScreenBackground.visible = false;
+		}
+		
+		function showScoreScreen(){
+			
+			scoreTextField.text = cakeNumber + " pieces of cake";
+			stage.setChildIndex(scoreScreenBackground, stage.numChildren-1);
+			stage.setChildIndex(scoreTextField, stage.numChildren-1);
+			scoreTextField.visible = true;
+			scoreScreenBackground.visible = true;
+			
+			gameTimer.stop();
+			isPaused = true;
+			
 		}
 		
 		function IntroAnimation(){

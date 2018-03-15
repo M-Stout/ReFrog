@@ -23,6 +23,9 @@
 			visible = true;
 			play();
 			
+			if (numberOfPieces < 1){
+				visible = false;
+			}
 			if (numberOfPieces > 8) {
 				secondLayer = new cakeAnimation(this.x, this.y-(50*this.scaleY), numberOfPieces - 8, this.scaleX*0.8);
 				secondLayer.gotoAndStop(0);
@@ -47,7 +50,9 @@
 		}
 		
 		public function Delete(){
-			kernel.instance.stage.removeChild(secondLayer);
+			if(secondLayer){
+				kernel.instance.stage.removeChild(secondLayer);
+			}
 			removeEventListener(Event.ENTER_FRAME, EnterFrame);
 		}
 		

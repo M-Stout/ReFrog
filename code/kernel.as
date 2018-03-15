@@ -285,7 +285,7 @@
 		
 		function createScoreScreen(){
 			
-			cakeNumber = 100; //default number of cake pieces collected
+			cakeNumber = 0; //default number of cake pieces collected
 			scoreScreenBackground = new scoreScreen();
 			scoreTextField = new TextField();
 			

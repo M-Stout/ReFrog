@@ -335,7 +335,6 @@
 			scoreTextField.visible = false;
 			isPaused = false;
 			gameTimer.start();
-			//stage.removeChild(scoreScreenBackground);
 			
 			scoreScreenCakeAnimation.Delete();
 			stage.removeChild(scoreScreenCakeAnimation);

@@ -286,6 +286,8 @@
 			
 			GenerateLevel();
 			
+			generateCakePieces();
+			
 		}
 		
 		function ArrangeTiles(){

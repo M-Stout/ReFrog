@@ -52,7 +52,7 @@
 		
 		function Delete(){
 			
-			kernel.entityList.splice(kernel.cakePieces.indexOf(this), 1);
+			kernel.cakePieces.splice(kernel.cakePieces.indexOf(this), 1);
 			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
 			mStage.removeChild(this);
 			

@@ -32,8 +32,15 @@
 				targetPosition.x += xInput;
 				targetPosition.y += yInput;
 				
-
 				maxBounceHeight = pBounceHeight;
+				
+				for (var entityIndex:int = 0; entityIndex < kernel.entityList.length; entityIndex++) {
+					if (kernel.entityList[entityIndex].typeOfEntity == "cakePiece") { 
+						if(Vector3D.distance(kernel.entityList[entityIndex].movementComponent.currentPosition, targetPosition) < 0.5){ //if going to jump into a cake piece, move the cake piece in the same direction
+							kernel.entityList[entityIndex].movementComponent.Move(xInput, yInput, 10);
+						}
+					}
+				}
 			}
 		}
 		

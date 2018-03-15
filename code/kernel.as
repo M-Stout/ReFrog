@@ -261,12 +261,15 @@
 		
 		function ResetLevel(){
 			
+			gameTimer.start();
+			
 			introPlaying = true;
 			introAnimationPosition = 1000;
 			introDirection = Math.round(Math.random()*4);
 			
 			playerObject.introPlaying = true;
 			playerObject.introAnimationPosition = -1;
+			playerObject.visible = true;
 			
 			playerObject.movementComponent.currentPosition = new Vector3D(kernel.RandomNumberBetween(1, 8), 0, 0);
 			playerObject.movementComponent.fromPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, playerObject.movementComponent.currentPosition.y, 0);

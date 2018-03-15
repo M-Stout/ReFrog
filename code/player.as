@@ -21,6 +21,8 @@
 		var introPlaying = true;
 		var introAnimationPosition = -1;
 		
+		var gameOverScreenInstance;
+		
 		public function player(pStage) {
 			// constructor code
 			mStage = pStage;
@@ -37,6 +39,10 @@
 			collisionComponent.Update();
 			
 			if (introPlaying){
+				if (gameOverScreenInstance){
+					mStage.removeChild(gameOverScreenInstance);
+					gameOverScreenInstance = null;
+				}
 				this.alpha = introAnimationPosition;
 				introAnimationPosition+= 0.02;
 				if(introAnimationPosition > 1){
@@ -47,7 +53,8 @@
 		}
 		
 		function Delete(){
-			mStage.addChild(new gameOverScreen()); //add game over
+			gameOverScreenInstance = new gameOverScreen();
+			mStage.addChild(gameOverScreenInstance); //add game over
 			kernel.gameTimer.stop(); //stop kernel update
 			
 			//THIS OLD CODE TOTALLY DELETES THE PLAYER, NEW CODE JUST HIDES AND PAUSES READY FOR RESET
@@ -65,7 +72,7 @@
 			this.visible=false;
 			shadowObject.visible=false;
 			
-			kernel.instance.RemoveAllInputListeners();
+			//kernel.instance.RemoveAllInputListeners();
 		}
 		
 		function CreateShadow(){

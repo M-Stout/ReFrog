@@ -285,7 +285,7 @@
 		
 		function createScoreScreen(){
 			
-			cakeNumber = 12; //default number of cake pieces collected
+			cakeNumber = 100; //default number of cake pieces collected
 			scoreScreenBackground = new scoreScreen();
 			scoreTextField = new TextField();
 			
@@ -320,9 +320,7 @@
 			scoreTextField.visible = true;
 			scoreScreenBackground.visible = true;
 			
-			scoreScreenCakeAnimation = new cakeAnimation(cakeNumber);
-			scoreScreenCakeAnimation.x = 900;
-			scoreScreenCakeAnimation.y = 500;
+			scoreScreenCakeAnimation = new cakeAnimation(900, 500, cakeNumber, 1);
 			stage.addChild(scoreScreenCakeAnimation);
 			
 			gameTimer.stop();

@@ -27,6 +27,8 @@
 		
 		static var playerObject;
 		
+		static var cakePieces = [];
+		
 		static var cakeNumber;
 		static var scoreTextField;
 		static var textFormat: TextFormat;
@@ -67,6 +69,9 @@
 			playerObject = new player(stage);
 			entityList.push(playerObject);
 			stage.addChild(playerObject);
+			
+			//add cake pieces
+			generateCakePieces();
 			
 			//score screen
 			createScoreScreen();
@@ -234,6 +239,16 @@
 			PlaceTile(RandomNumberBetween(2, 7), 9, "finishTile");
 			
 			ArrangeTiles();
+		}
+		
+		function generateCakePieces() {
+			
+			var totalNumberOfCakePieces = 1; //RandomNumberBetween(2, 5); trace(totalNumberOfCakePieces);
+			for (var i:int = 0; i < totalNumberOfCakePieces; i++) {
+				cakePieces[i] = new cakePiece(stage);
+				entityList.push(cakePieces[i]);
+				stage.addChild(cakePieces[i]);
+			}
 		}
 		
 		function FinishLevel(){

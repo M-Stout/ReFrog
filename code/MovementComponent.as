@@ -32,8 +32,7 @@
 				targetPosition.x += xInput;
 				targetPosition.y += yInput;
 				
-				
-				
+
 				maxBounceHeight = pBounceHeight;
 			}
 		}

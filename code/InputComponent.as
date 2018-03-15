@@ -46,6 +46,10 @@
 				}
 				right = true; anyKeyDown = true;
 			}
+			if (e.keyCode == 69){//e (debug)
+				possessed.movementComponent.Move(0, 9, 100);
+				possessed.movementComponent.currentPosition.y = 9;
+			}
 		}
 		
 		public function KeyUp(e:KeyboardEvent){

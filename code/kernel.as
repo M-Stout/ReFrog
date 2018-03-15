@@ -285,7 +285,7 @@
 		
 		function createScoreScreen(){
 			
-			cakeNumber = 5; //default number of cake pieces collected
+			cakeNumber = 0; //default number of cake pieces collected
 			scoreScreenBackground = new scoreScreen();
 			scoreTextField = new TextField();
 			
@@ -320,9 +320,7 @@
 			scoreTextField.visible = true;
 			scoreScreenBackground.visible = true;
 			
-			scoreScreenCakeAnimation = new cakeAnimation(cakeNumber);
-			scoreScreenCakeAnimation.x = 900;
-			scoreScreenCakeAnimation.y = 500;
+			scoreScreenCakeAnimation = new cakeAnimation(900, 500, cakeNumber, 1);
 			stage.addChild(scoreScreenCakeAnimation);
 			
 			gameTimer.stop();
@@ -335,7 +333,8 @@
 			scoreTextField.visible = false;
 			isPaused = false;
 			gameTimer.start();
-			stage.removeChild(scoreScreenBackground);
+			
+			scoreScreenCakeAnimation.Delete();
 			stage.removeChild(scoreScreenCakeAnimation);
 		}
 		

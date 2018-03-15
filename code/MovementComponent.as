@@ -62,6 +62,7 @@
 			if (Vector3D.distance(currentPosition, targetPosition) < 0.1){
 				moving = false;
 				currentHeight = 0;
+				possessed.gotoAndStop(9*(Math.floor((possessed.currentFrame-1)/9))+1);
 			}
 			
 			possessed.shadowObject.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).x;

@@ -21,28 +21,28 @@
 			if (e.keyCode == 87){//w
 				if (!up && !anyKeyDown){
 					possessed.movementComponent.Move(0, 1, 40);
-					possessed.gotoAndStop(1);
+					possessed.gotoAndPlay(1);
 				}
 				up = true; anyKeyDown = true;
 			}
 			if (e.keyCode == 65){//a
 				if (!left && !anyKeyDown){
 					possessed.movementComponent.Move(-1, 0, 40);
-					possessed.gotoAndStop(13);
+					possessed.gotoAndPlay(10);
 				}
 				left = true; anyKeyDown = true;
 			}
 			if (e.keyCode == 83){//s
 				if (!down && !anyKeyDown){
 					possessed.movementComponent.Move(0, -1, 40);
-					possessed.gotoAndStop(25);
+					possessed.gotoAndPlay(19);
 				}
 				down = true; anyKeyDown = true;
 			}
 			if (e.keyCode == 68){//d
 				if (!right && !anyKeyDown){
 					possessed.movementComponent.Move(1, 0, 40);
-					possessed.gotoAndStop(37);
+					possessed.gotoAndPlay(28);
 				}
 				right = true; anyKeyDown = true;
 			}

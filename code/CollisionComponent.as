@@ -66,7 +66,7 @@
 		function checkTouchingCar():Boolean{
 			for (var entityIndex:int = 0; entityIndex < kernel.entityList.length; entityIndex++) {
 				if (kernel.entityList[entityIndex].typeOfEntity == "car") {
-					if (Math.abs(kernel.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.8) {//check x position
+					if (Math.abs(kernel.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.5) {//check x position
 						if(kernel.entityList[entityIndex].roadPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
 							return true;
 						}

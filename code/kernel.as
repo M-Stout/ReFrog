@@ -243,7 +243,7 @@
 		
 		function generateCakePieces() {
 			
-			var totalNumberOfCakePieces = 1; //RandomNumberBetween(2, 5); trace(totalNumberOfCakePieces);
+			var totalNumberOfCakePieces = RandomNumberBetween(2, 5);
 			for (var i:int = 0; i < totalNumberOfCakePieces; i++) {
 				cakePieces[i] = new cakePiece(stage);
 				entityList.push(cakePieces[i]);

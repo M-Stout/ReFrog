@@ -20,8 +20,8 @@
 			Move(0, 0);
 		}
 		
-		public function Move(xInput, yInput, pBounceHeight = 0){
-			if (!moving){
+		public function Move(xInput, yInput, pBounceHeight = 0, doubleJump = false){
+			if (!moving || doubleJump){
 				moving = true;
 				
 				//set previous position
@@ -38,6 +38,18 @@
 					if (kernel.entityList[entityIndex].typeOfEntity == "cakePiece") { 
 						if(Vector3D.distance(kernel.entityList[entityIndex].movementComponent.currentPosition, targetPosition) < 0.5){ //if going to jump into a cake piece, move the cake piece in the same direction
 							kernel.entityList[entityIndex].movementComponent.Move(xInput, yInput, 10);
+						}
+					}
+				}
+				if (possessed.typeOfEntity == "cakePiece"){ //special movement rules for cake pieces (to keep them safe)
+					if(possessed.collisionComponent){
+						if (possessed.collisionComponent.checkTile(targetPosition) == "waterTile" || possessed.collisionComponent.checkTile(targetPosition) == "roadTile" ){
+							Move(0, yInput, pBounceHeight, true);
+						}
+					}
+					if(targetPosition.x < 1 || targetPosition.x > 8 || targetPosition.y < 1 || targetPosition.y > 9){ //if touching edge of the screen, bounce away
+						if(xInput!=0 || yInput != 0){
+							Move(-xInput, -yInput, pBounceHeight, true);
 						}
 					}
 				}
@@ -68,7 +80,9 @@
 			if (Vector3D.distance(currentPosition, targetPosition) < 0.1){
 				moving = false;
 				currentHeight = 0;
-				possessed.gotoAndStop(9*(Math.floor((possessed.currentFrame-1)/9))+1);
+				if (possessed.typeOfEntity == "player"){
+					possessed.gotoAndStop(9*(Math.floor((possessed.currentFrame-1)/9))+1);
+				}
 			}
 			
 			possessed.shadowObject.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).x;

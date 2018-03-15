@@ -25,8 +25,8 @@
 			while (true) { //choose safe space to spawn cakepiece
 				var possibleDropSite = new Vector3D(kernel.RandomNumberBetween(1, 8), kernel.RandomNumberBetween(1, 8), 0);
 				if (collisionComponent.checkTile(possibleDropSite) == "grassTile"){
-					movementComponent.currentPosition = possibleDropSite;
-					movementComponent.targetPosition = possibleDropSite;
+					movementComponent.currentPosition = new Vector3D(possibleDropSite.x, possibleDropSite.y, 0);
+					movementComponent.targetPosition = new Vector3D(possibleDropSite.x, possibleDropSite.y, 0);
 					break;
 				}
 			}

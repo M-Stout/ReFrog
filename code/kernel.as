@@ -29,7 +29,9 @@
 		
 		static var cakeNumber;
 		static var scoreTextField;
+		static var textFormat: TextFormat;
 		static var scoreScreenBackground;
+		static var scoreScreenCakeAnimation;
 		
 		static var isPaused = false;
 		
@@ -99,10 +101,7 @@
 				}
 			}
 			if (scoreScreenBackground.visible) {
-				scoreScreenBackground.visible = false;
-				scoreTextField.visible = false;
-				isPaused = false;
-				gameTimer.start();
+				hideScoreScreen();
 			}
 		}
 		function KeyUp(e:KeyboardEvent){
@@ -286,14 +285,14 @@
 		
 		function createScoreScreen(){
 			
-			cakeNumber = 0;
+			cakeNumber = 5; //default number of cake pieces collected
 			scoreScreenBackground = new scoreScreen();
 			scoreTextField = new TextField();
 			
 			scoreScreenBackground.x = 0;
 			scoreScreenBackground.y = 0;
 			
-			var textFormat: TextFormat = new TextFormat(); 
+			textFormat = new TextFormat(); 
             textFormat.font = "Arial"; 
             textFormat.color = 0x3366CC; 
             textFormat.size = 58; 
@@ -315,14 +314,29 @@
 		function showScoreScreen(){
 			
 			scoreTextField.text = cakeNumber + " pieces of cake";
+			scoreTextField.setTextFormat(textFormat);
 			stage.setChildIndex(scoreScreenBackground, stage.numChildren-1);
 			stage.setChildIndex(scoreTextField, stage.numChildren-1);
 			scoreTextField.visible = true;
 			scoreScreenBackground.visible = true;
 			
+			scoreScreenCakeAnimation = new cakeAnimation(cakeNumber);
+			scoreScreenCakeAnimation.x = 900;
+			scoreScreenCakeAnimation.y = 500;
+			stage.addChild(scoreScreenCakeAnimation);
+			
 			gameTimer.stop();
 			isPaused = true;
 			
+		}
+		
+		function hideScoreScreen(){
+			scoreScreenBackground.visible = false;
+			scoreTextField.visible = false;
+			isPaused = false;
+			gameTimer.start();
+			stage.removeChild(scoreScreenBackground);
+			stage.removeChild(scoreScreenCakeAnimation);
 		}
 		
 		function IntroAnimation(){

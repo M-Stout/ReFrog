@@ -19,7 +19,11 @@
 			if (possessed.movementComponent){
 				if(checkTile(possessed.movementComponent.currentPosition) == "roadTile"){
 					if (checkTouchingCar()){
-						//play splat effect?
+						var splatEffect = new splat();
+						splatEffect.x = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
+						splatEffect.y = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
+						possessed.mStage.addChild(splatEffect);
+						
 						possessed.Delete();
 					}
 				}

@@ -315,7 +315,7 @@
 		
 		function createScoreScreen(){
 			
-			cakeNumber = 987; //default number of cake pieces collected
+			cakeNumber = 0; //default number of cake pieces collected
 			scoreScreenBackground = new scoreScreen();
 			
 			scoreScreenBackground.x = 0;

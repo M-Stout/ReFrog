@@ -56,7 +56,7 @@
 			if (kernel.tiles[Math.round(position.x)][Math.round(position.y)]){
 				return kernel.tiles[Math.round(position.x)][Math.round(position.y)].typeOfTile;
 			} else {
-				trace("object with collider trying to get out of bounds :(");
+				trace("object with collider cannot get out of bounds :)");
 				return "";
 			}
 		}

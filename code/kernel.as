@@ -29,6 +29,8 @@
 		
 		static var cakePieces = [];
 		
+		static var titleScreen;
+		
 		static var cakeNumber;
 		static var scoreTextField;
 		static var textFormat: TextFormat;
@@ -77,10 +79,13 @@
 			createScoreScreen();
 			
 			gameTimer.addEventListener(TimerEvent.TIMER, Update);
-			gameTimer.start();
+			//gameTimer.start(); //starts the game timer (is now started after the first key press that also removes the title screen)
 			
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, KeyDown);
 			stage.addEventListener(KeyboardEvent.KEY_UP, KeyUp);
+			
+			titleScreen = new startScreen();
+			stage.addChild(titleScreen);
 		}
 		
 		function KeyDown(e:KeyboardEvent){
@@ -107,6 +112,11 @@
 			}
 			if (scoreScreenBackground.visible) {
 				hideScoreScreen();
+			}
+			if (titleScreen){ //removes title screen and starts game
+				stage.removeChild(titleScreen);
+				titleScreen = null;
+				gameTimer.start();
 			}
 		}
 		function KeyUp(e:KeyboardEvent){

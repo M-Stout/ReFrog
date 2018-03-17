@@ -326,7 +326,7 @@
             textFormat.color = 0xF701FA; 
             textFormat.size = 58; 
 			
-			scoreTextField = new customScoreDisplayer(90, 250);
+			scoreTextField = new customScoreDisplayer(100, 240);
 			
 			stage.addChild(scoreScreenBackground);
 			stage.addChild(scoreTextField);

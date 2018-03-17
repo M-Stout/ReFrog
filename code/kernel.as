@@ -315,24 +315,18 @@
 		
 		function createScoreScreen(){
 			
-			cakeNumber = 0; //default number of cake pieces collected
+			cakeNumber = 987; //default number of cake pieces collected
 			scoreScreenBackground = new scoreScreen();
-			scoreTextField = new TextField();
 			
 			scoreScreenBackground.x = 0;
 			scoreScreenBackground.y = 0;
 			
-			textFormat = new TextFormat(); 
-            textFormat.font = "Arial"; 
-            textFormat.color = 0x3366CC; 
+			textFormat = new TextFormat();  // text format no longer necessary, proabably should delete
+            textFormat.font = "Bubble Letters"; 
+            textFormat.color = 0xF701FA; 
             textFormat.size = 58; 
 			
-			scoreTextField.text = "0 pieces of cake";
-			scoreTextField.x = 90;
-			scoreTextField.y = 210;
-			scoreTextField.width = 1000;
-			scoreTextField.selectable = false;
-			scoreTextField.setTextFormat(textFormat);
+			scoreTextField = new customScoreDisplayer(90, 250);
 			
 			stage.addChild(scoreScreenBackground);
 			stage.addChild(scoreTextField);
@@ -343,14 +337,14 @@
 		
 		function showScoreScreen(){
 			
-			scoreTextField.text = cakeNumber + " pieces of cake";
-			scoreTextField.setTextFormat(textFormat);
+			scoreTextField.DisplayNumbers(cakeNumber);
+			
 			stage.setChildIndex(scoreScreenBackground, stage.numChildren-1);
 			stage.setChildIndex(scoreTextField, stage.numChildren-1);
 			scoreTextField.visible = true;
 			scoreScreenBackground.visible = true;
 			
-			scoreScreenCakeAnimation = new cakeAnimation(900, 500, cakeNumber, 1);
+			scoreScreenCakeAnimation = new cakeAnimation(900, 600, cakeNumber, 1.2);
 			stage.addChild(scoreScreenCakeAnimation);
 			
 			gameTimer.stop();

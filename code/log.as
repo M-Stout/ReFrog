@@ -10,7 +10,7 @@
 		var xPosition = -1;
 		var riverPosition = 0;
 		
-		var logSpeed = kernel.RandomNumberBetween(1, 3)/100;
+		var logSpeed = kernel.RandomNumberBetween(15, 25)/1000;
 		
 		public function log(pRiverPosition: Number) {
 			// constructor code

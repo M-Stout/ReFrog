@@ -10,7 +10,7 @@
 		var xPosition = -1;
 		var riverPosition = 0;
 		
-		var logSpeed = kernel.RandomNumberBetween(15, 25)/1000;
+		var logSpeed = kernel.RandomNumberBetween(15, 25)/1000; //different speeds cause logs to cross over each other
 		
 		public function log(pRiverPosition: Number) {
 			// constructor code

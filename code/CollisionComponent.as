@@ -29,7 +29,7 @@
 				}
 				else if (checkTile(possessed.movementComponent.currentPosition) == "waterTile" && !possessed.movementComponent.moving){ //if touching water
 					if(checkTouchingLog() && possessed.typeOfEntity == "player"){ //if touching log
-						possessed.movementComponent.targetPosition.x += 0.02; //move with log ( could be set to the speed of the log, but we'll assume they're always the same speed :) )
+						possessed.movementComponent.targetPosition.x += checkTouchingLog().logSpeed; //move with log ( could be set to the speed of the log, but we'll assume they're always the same speed :) )
 					} else { //else die
 						var splashEffect = new splash();
 						splashEffect.x = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
@@ -61,12 +61,12 @@
 			}
 		}
 		
-		function checkTouchingLog():Boolean{
+		function checkTouchingLog(){
 			for (var entityIndex:int = 0; entityIndex < kernel.entityList.length; entityIndex++) {
 				if (kernel.entityList[entityIndex].typeOfEntity == "log") {
 					if (Math.abs(kernel.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.9) {//check x position
 						if(kernel.entityList[entityIndex].riverPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
-							return true;
+							return kernel.entityList[entityIndex];
 						}
 					}
 				}

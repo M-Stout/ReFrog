@@ -355,6 +355,7 @@
 		function hideScoreScreen(){
 			scoreScreenBackground.visible = false;
 			scoreTextField.visible = false;
+			scoreTextField.RemoveAllChildren();
 			isPaused = false;
 			gameTimer.start();
 			

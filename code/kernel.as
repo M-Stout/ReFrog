@@ -280,6 +280,7 @@
 			playerObject.introPlaying = true;
 			playerObject.introAnimationPosition = -1;
 			playerObject.visible = true;
+			playerObject.shadowObject.visible = true;
 			
 			playerObject.movementComponent.currentPosition = new Vector3D(kernel.RandomNumberBetween(1, 8), 0, 0);
 			playerObject.movementComponent.fromPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, playerObject.movementComponent.currentPosition.y, 0);

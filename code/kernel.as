@@ -164,7 +164,7 @@
 			var tileTypeClass: Class = getDefinitionByName(tileTypeName) as Class;
 			tiles[x][y] = new tileTypeClass();	
 			tiles[x][y].x = ToIsometric(x, y).x;
-			tiles[x][y].y = ToIsometric(x, y).y;
+			tiles[x][y].y = ToIsometric(x, y).y; /*tiles[x][y].y = ToIsometric(x, y, Math.random()*3).y;*/
 			
 			tiles[x][y].typeOfTile = tileTypeName;
 			

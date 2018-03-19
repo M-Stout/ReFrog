@@ -371,13 +371,13 @@
 						if (tiles[x][y].y < tiles[x][y].properPosition.y){
 							switch (introDirection){
 								case 0:
-									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-y*100);
+									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-y*100) - 1000;
 									break;
 								case 1:
 									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (y*100);
 									break;
 								case 2:
-									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-x*100);
+									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (-x*100) - 1000;
 									break;
 								default:
 									tiles[x][y].y = tiles[x][y].properPosition.y - introAnimationPosition - (x*100);
@@ -393,7 +393,7 @@
 								tiles[x][y].y = tiles[x][y].properPosition.y;
 							}
 						}
-						introPlaying = false;									
+						introPlaying = false;								
 					}
 				}
 			}

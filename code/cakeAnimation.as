@@ -51,6 +51,7 @@
 		
 		public function Delete(){
 			if(secondLayer){
+				secondLayer.Delete();
 				kernel.instance.stage.removeChild(secondLayer);
 			}
 			removeEventListener(Event.ENTER_FRAME, EnterFrame);

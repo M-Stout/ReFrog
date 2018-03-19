@@ -47,11 +47,6 @@
 							Move(0, yInput, pBounceHeight, true);
 						}
 					}
-					if(targetPosition.x < 1 || targetPosition.x > 8 || targetPosition.y < 1 || targetPosition.y > 9){ //if touching edge of the screen, bounce away
-						if(xInput!=0 || yInput != 0){
-							Move(-xInput, -yInput, pBounceHeight, true);
-						}
-					}
 				}
 			}
 		}
@@ -64,7 +59,7 @@
 			
 			//bounding x and y within 0 - 9t
 			currentPosition.x = Math.min(9, Math.max(currentPosition.x, 0));
-			currentPosition.y = Math.min(9, Math.max(currentPosition.y, 0));
+			currentPosition.y = Math.min(10, Math.max(currentPosition.y, 0));
 			targetPosition.x = Math.min(9, Math.max(targetPosition.x, 0));
 			targetPosition.y = Math.min(9, Math.max(targetPosition.y, 0));
 			
@@ -83,6 +78,23 @@
 				if (possessed.typeOfEntity == "player"){
 					possessed.gotoAndStop(9*(Math.floor((possessed.currentFrame-1)/9))+1);
 				}
+			}
+			
+			if (possessed.typeOfEntity == "cakePiece"){ //special movement rules for cake pieces (to keep them safe)
+				if (!moving){
+					if(currentPosition.x < 1){
+						Move(1, 0, 30, false);
+					}
+					if(currentPosition.x > 8){
+						Move(-1, 0, 30, false);
+					}
+					if(currentPosition.y < 1){
+						Move(0, 1, 30, false);
+					}
+					if(currentPosition.y > 9){
+						Move(0, -1, 30, false);
+					}
+				}				
 			}
 			
 			possessed.shadowObject.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).x;

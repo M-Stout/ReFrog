@@ -10,6 +10,8 @@
 		
 		var typeOfEntity = "player";
 		
+		var mEngine;
+		
 		var mStage;
 		
 		var movementComponent;
@@ -23,9 +25,10 @@
 		
 		var gameOverScreenInstance;
 		
-		public function player(pStage) {
+		public function player(pEngine) {
 			// constructor code
-			mStage = pStage;
+			mEngine = pEngine;
+			mStage = mEngine.mainStage;
 			movementComponent = new MovementComponent(this);
 			inputComponent = new InputComponent(this);
 			collisionComponent = new CollisionComponent(this);
@@ -55,7 +58,7 @@
 		function Delete(){
 			gameOverScreenInstance = new gameOverScreen();
 			mStage.addChild(gameOverScreenInstance); //add game over
-			isoEngine.gameTimer.stop(); //stop timer update
+			mEngine.gameTimer.stop(); //stop timer update
 			
 			
 			this.visible=false;

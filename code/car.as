@@ -5,6 +5,8 @@
 	
 	public class car extends MovieClip {
 		
+		var mEngine;
+		
 		var typeOfEntity = "car";
 		
 		var xPosition = -1;
@@ -12,8 +14,10 @@
 		
 		var carSpeed = 0.03;
 		
-		public function car(pRoadPosition: Number) {
+		public function car(pRoadPosition: Number, pEngine) {
 			// constructor code
+			mEngine = pEngine;
+			
 			roadPosition = pRoadPosition;
 			xPosition = -2-Math.random()*3;
 		}
@@ -35,7 +39,7 @@
 		}
 		
 		function Delete() {
-			isoEngine.entityList.splice(isoEngine.entityList.indexOf(this), 1);
+			mEngine.entityList.splice(mEngine.entityList.indexOf(this), 1);
 			this.parent.removeChild(this);
 		}
 		

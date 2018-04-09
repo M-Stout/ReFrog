@@ -15,36 +15,36 @@
 		
 		public var mainStage;
 		
-		static var tiles = []; //this array is tiles
+		var tiles = []; //this array is tiles
 		
 		var introPlaying: Boolean = true;
 		var introAnimationPosition: Number = 1000;
 		var introDirection: Number = Math.round(Math.random()*4);
 		
-		static var entityList = [];
+		var entityList = [];
 		
-		static var riverPositions = [];
+		var riverPositions = [];
 		var carSpawnCountdown = 60;
-		static var roadPositions = [];
+		var roadPositions = [];
 		var logSpawnCountdown = 200;
 		
-		static var playerObject;
+		var playerObject;
 		
-		static var cakePieces = [];
+		var cakePieces = [];
 		
-		static var titleScreen;
+		var titleScreen;
 		
-		static var cakeNumber;
-		static var scoreTextField;
-		static var textFormat: TextFormat;
-		static var scoreScreenBackground;
-		static var scoreScreenCakeAnimation;
+		var cakeNumber;
+		var scoreTextField;
+		var textFormat: TextFormat;
+		var scoreScreenBackground;
+		var scoreScreenCakeAnimation;
 		
-		static var isPaused = false;
+		var isPaused = false;
 		
 		//game timer
-		static var _period:Number = 1000/60;
-		static var gameTimer:Timer = new Timer(_period);
+		var _period:Number = 1000/60;
+		var gameTimer:Timer = new Timer(_period);
 		
 		public function isoEngine(pStage) {
 			// constructor code
@@ -73,7 +73,7 @@
 			
 			GenerateLevel();
 		
-			playerObject = new player(mainStage);
+			playerObject = new player(this);
 			entityList.push(playerObject);
 			mainStage.addChild(playerObject);
 			
@@ -198,7 +198,7 @@
 		}
 		
 		function spawnLog(riverPosition) {
-			var spawningLog = new log(riverPosition);
+			var spawningLog = new log(riverPosition, this);
 			mainStage.addChild(spawningLog);
 			entityList.push(spawningLog);
 			
@@ -209,7 +209,7 @@
 		}
 		
 		function spawnCar(roadPosition) {
-			var spawningCar = new car(roadPosition);
+			var spawningCar = new car(roadPosition, this);
 			mainStage.addChild(spawningCar);
 			entityList.push(spawningCar);
 			
@@ -260,7 +260,7 @@
 			
 			var totalNumberOfCakePieces = stoutMath.RandomNumberBetween(2, 5);
 			for (var i:int = 0; i < totalNumberOfCakePieces; i++) {
-				cakePieces[i] = new cakePiece(mainStage);
+				cakePieces[i] = new cakePiece(this);
 				entityList.push(cakePieces[i]);
 				mainStage.addChild(cakePieces[i]);
 			}
@@ -350,7 +350,7 @@
 			scoreTextField.visible = true;
 			scoreScreenBackground.visible = true;
 			
-			scoreScreenCakeAnimation = new cakeAnimation(900, 600, cakeNumber, 1.2);
+			scoreScreenCakeAnimation = new cakeAnimation(900, 600, cakeNumber, 1.2, this);
 			mainStage.addChild(scoreScreenCakeAnimation);
 			
 			gameTimer.stop();

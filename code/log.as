@@ -5,6 +5,8 @@
 	
 	public class log extends MovieClip {
 		
+		var mEngine;
+		
 		var typeOfEntity = "log";
 		
 		var xPosition = -1;
@@ -12,8 +14,10 @@
 		
 		var logSpeed = stoutMath.RandomNumberBetween(15, 25)/1000; //different speeds cause logs to cross over each other
 		
-		public function log(pRiverPosition: Number) {
+		public function log(pRiverPosition: Number, pEngine) {
 			// constructor code
+			mEngine = pEngine;
+			
 			riverPosition = pRiverPosition;
 			xPosition = -1-Math.random()*3;
 		}
@@ -35,7 +39,7 @@
 		}
 		
 		function Delete() {
-			isoEngine.entityList.splice(isoEngine.entityList.indexOf(this), 1);
+			mEngine.entityList.splice(mEngine.entityList.indexOf(this), 1);
 			this.parent.removeChild(this);
 		}
 		

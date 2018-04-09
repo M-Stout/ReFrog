@@ -34,10 +34,10 @@
 				
 				maxBounceHeight = pBounceHeight;
 				
-				for (var entityIndex:int = 0; entityIndex < isoEngine.entityList.length; entityIndex++) {
-					if (isoEngine.entityList[entityIndex].typeOfEntity == "cakePiece") { 
-						if(Vector3D.distance(isoEngine.entityList[entityIndex].movementComponent.currentPosition, targetPosition) < 0.5){ //if going to jump into a cake piece, move the cake piece in the same direction
-							isoEngine.entityList[entityIndex].movementComponent.Move(xInput, yInput, 10);
+				for (var entityIndex:int = 0; entityIndex < possessed.mEngine.entityList.length; entityIndex++) {
+					if (possessed.mEngine.entityList[entityIndex].typeOfEntity == "cakePiece") { 
+						if(Vector3D.distance(possessed.mEngine.entityList[entityIndex].movementComponent.currentPosition, targetPosition) < 0.5){ //if going to jump into a cake piece, move the cake piece in the same direction
+							possessed.mEngine.entityList[entityIndex].movementComponent.Move(xInput, yInput, 10);
 						}
 					}
 				}

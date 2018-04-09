@@ -41,11 +41,11 @@
 				}
 				else if (checkTile(possessed.movementComponent.currentPosition) == "finishTile"  && !possessed.movementComponent.moving){ //if touching finish tile
 					if (possessed.typeOfEntity == "player") {
-						isoEngine.instance.FinishLevel();
+						possessed.mEngine.FinishLevel();
 					}
 					if (possessed.typeOfEntity == "cakePiece") {
 						possessed.Delete();
-						isoEngine.cakeNumber++;
+						possessed.mEngine.cakeNumber++;
 					}
 				}
 			}
@@ -53,8 +53,8 @@
 		}
 		
 		function checkTile(position: Vector3D):String{
-			if (isoEngine.tiles[Math.round(position.x)][Math.round(position.y)]){
-				return isoEngine.tiles[Math.round(position.x)][Math.round(position.y)].typeOfTile;
+			if (possessed.mEngine.tiles[Math.round(position.x)][Math.round(position.y)]){
+				return possessed.mEngine.tiles[Math.round(position.x)][Math.round(position.y)].typeOfTile;
 			} else {
 				//trace("object with collider cannot get out of bounds :)");
 				return "";
@@ -62,11 +62,11 @@
 		}
 		
 		function checkTouchingLog(){
-			for (var entityIndex:int = 0; entityIndex < isoEngine.entityList.length; entityIndex++) {
-				if (isoEngine.entityList[entityIndex].typeOfEntity == "log") {
-					if (Math.abs(isoEngine.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.9) {//check x position
-						if(isoEngine.entityList[entityIndex].riverPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
-							return isoEngine.entityList[entityIndex];
+			for (var entityIndex:int = 0; entityIndex < possessed.mEngine.entityList.length; entityIndex++) {
+				if (possessed.mEngine.entityList[entityIndex].typeOfEntity == "log") {
+					if (Math.abs(possessed.mEngine.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.9) {//check x position
+						if(possessed.mEngine.entityList[entityIndex].riverPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
+							return possessed.mEngine.entityList[entityIndex];
 						}
 					}
 				}
@@ -75,10 +75,10 @@
 		}
 		
 		function checkTouchingCar():Boolean{
-			for (var entityIndex:int = 0; entityIndex < isoEngine.entityList.length; entityIndex++) {
-				if (isoEngine.entityList[entityIndex].typeOfEntity == "car") {
-					if (Math.abs(isoEngine.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.5) {//check x position
-						if(isoEngine.entityList[entityIndex].roadPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
+			for (var entityIndex:int = 0; entityIndex < possessed.mEngine.entityList.length; entityIndex++) {
+				if (possessed.mEngine.entityList[entityIndex].typeOfEntity == "car") {
+					if (Math.abs(possessed.mEngine.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.5) {//check x position
+						if(possessed.mEngine.entityList[entityIndex].roadPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
 							return true;
 						}
 					}

@@ -6,19 +6,23 @@
 	
 	public class cakeAnimation extends MovieClip {
 		
+		var mStage;
+		
 		var numberOfPieces = 0;
 		var currentTotalFrame = 0;
 		
 		var secondLayer: cakeAnimation;
 		//var thirdLayer: cakeAnimation;
 		
-		public function cakeAnimation(xInput, yInput, pNumberOfPieces: Number, scale) {
+		public function cakeAnimation(xInput, yInput, pNumberOfPieces: Number, scale, pStage) {
 			// constructor code
 			this.x = xInput;
 			this.y = yInput;
 			numberOfPieces = pNumberOfPieces;
 			this.scaleX = scale;
 			this.scaleY = scale;
+			
+			pStage = mStage;
 			
 			visible = true;
 			play();
@@ -27,10 +31,10 @@
 				visible = false;
 			}
 			if (numberOfPieces > 8) {
-				secondLayer = new cakeAnimation(this.x, this.y-(50*this.scaleY), numberOfPieces - 8, this.scaleX*0.8);
+				secondLayer = new cakeAnimation(this.x, this.y-(50*this.scaleY), numberOfPieces - 8, this.scaleX*0.8, mStage);
 				secondLayer.gotoAndStop(0);
 				secondLayer.visible = false;
-				isoEngine.instance.stage.addChild(secondLayer);
+				mStage.addChild(secondLayer);
 			}
 
 			addEventListener(Event.ENTER_FRAME, EnterFrame);
@@ -43,7 +47,7 @@
 			if(currentFrame == totalFrames-1){
 				gotoAndStop(totalFrames);
 				secondLayer.visible = true;
-				isoEngine.instance.stage.setChildIndex(secondLayer, isoEngine.instance.stage.numChildren-1);
+				mStage.setChildIndex(secondLayer, isoEngine.instance.stage.numChildren-1);
 				secondLayer.play();
 			}
 			
@@ -52,7 +56,7 @@
 		public function Delete(){
 			if(secondLayer){
 				secondLayer.Delete();
-				isoEngine.instance.stage.removeChild(secondLayer);
+				mStage.removeChild(secondLayer);
 			}
 			removeEventListener(Event.ENTER_FRAME, EnterFrame);
 		}

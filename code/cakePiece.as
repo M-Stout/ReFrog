@@ -5,10 +5,11 @@
 	
 	public class cakePiece extends MovieClip {
 		
-		var typeOfEntity = "cakePiece";
-		
+		var mEngine;
 		var mStage;
 		
+		var typeOfEntity = "cakePiece";
+				
 		var movementComponent;
 		var collisionComponent;
 		
@@ -17,8 +18,9 @@
 		var introPlaying = true;
 		var introAnimationPosition = 1600;
 		
-		public function cakePiece(pStage) {
-			mStage = pStage;
+		public function cakePiece(pEngine) {
+			mEngine = pEngine;
+			mStage = mEngine.mainStage;
 			movementComponent = new MovementComponent(this);
 			collisionComponent = new CollisionComponent(this);
 			
@@ -52,8 +54,8 @@
 		
 		function Delete(){
 			
-			isoEngine.cakePieces.splice(isoEngine.cakePieces.indexOf(this), 1);
-			isoEngine.entityList.splice(isoEngine.entityList.indexOf(this), 1);
+			mEngine.cakePieces.splice(mEngine.cakePieces.indexOf(this), 1);
+			mEngine.entityList.splice(mEngine.entityList.indexOf(this), 1);
 			mStage.removeChild(this);
 			
 			mStage.removeChild(shadowObject);

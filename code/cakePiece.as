@@ -23,7 +23,7 @@
 			collisionComponent = new CollisionComponent(this);
 			
 			while (true) { //choose safe space to spawn cakepiece
-				var possibleDropSite = new Vector3D(kernel.RandomNumberBetween(1, 8), kernel.RandomNumberBetween(1, 8), 0);
+				var possibleDropSite = new Vector3D(stoutMath.RandomNumberBetween(1, 8), stoutMath.RandomNumberBetween(1, 8), 0);
 				if (collisionComponent.checkTile(possibleDropSite) == "grassTile"){
 					movementComponent.currentPosition = new Vector3D(possibleDropSite.x, possibleDropSite.y, 0);
 					movementComponent.targetPosition = new Vector3D(possibleDropSite.x, possibleDropSite.y, 0);
@@ -32,7 +32,7 @@
 			}
 			movementComponent.Move(0, 0, 100);
 			
-			gotoAndStop(kernel.RandomNumberBetween(1, 8));
+			gotoAndStop(stoutMath.RandomNumberBetween(1, 8));
 			CreateShadow();
 		}
 		
@@ -41,7 +41,7 @@
 			collisionComponent.Update();
 			
 			if (introPlaying){
-				this.y = kernel.ToIsometric(movementComponent.currentPosition.x, movementComponent.currentPosition.y, introAnimationPosition-(movementComponent.currentPosition.x*50)).y;
+				this.y = isoEngine.ToIsometric(movementComponent.currentPosition.x, movementComponent.currentPosition.y, introAnimationPosition-(movementComponent.currentPosition.x*50)).y;
 				introAnimationPosition+= -20;
 				//trace(introAnimationPosition);
 				if(introAnimationPosition-(movementComponent.currentPosition.x*50) < 1){
@@ -52,8 +52,8 @@
 		
 		function Delete(){
 			
-			kernel.cakePieces.splice(kernel.cakePieces.indexOf(this), 1);
-			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
+			isoEngine.cakePieces.splice(isoEngine.cakePieces.indexOf(this), 1);
+			isoEngine.entityList.splice(isoEngine.entityList.indexOf(this), 1);
 			mStage.removeChild(this);
 			
 			mStage.removeChild(shadowObject);

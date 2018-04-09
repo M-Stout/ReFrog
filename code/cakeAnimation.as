@@ -30,7 +30,7 @@
 				secondLayer = new cakeAnimation(this.x, this.y-(50*this.scaleY), numberOfPieces - 8, this.scaleX*0.8);
 				secondLayer.gotoAndStop(0);
 				secondLayer.visible = false;
-				kernel.instance.stage.addChild(secondLayer);
+				isoEngine.instance.stage.addChild(secondLayer);
 			}
 
 			addEventListener(Event.ENTER_FRAME, EnterFrame);
@@ -43,7 +43,7 @@
 			if(currentFrame == totalFrames-1){
 				gotoAndStop(totalFrames);
 				secondLayer.visible = true;
-				kernel.instance.stage.setChildIndex(secondLayer, kernel.instance.stage.numChildren-1);
+				isoEngine.instance.stage.setChildIndex(secondLayer, isoEngine.instance.stage.numChildren-1);
 				secondLayer.play();
 			}
 			
@@ -52,7 +52,7 @@
 		public function Delete(){
 			if(secondLayer){
 				secondLayer.Delete();
-				kernel.instance.stage.removeChild(secondLayer);
+				isoEngine.instance.stage.removeChild(secondLayer);
 			}
 			removeEventListener(Event.ENTER_FRAME, EnterFrame);
 		}

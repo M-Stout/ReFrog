@@ -10,7 +10,7 @@
 		var xPosition = -1;
 		var riverPosition = 0;
 		
-		var logSpeed = kernel.RandomNumberBetween(15, 25)/1000; //different speeds cause logs to cross over each other
+		var logSpeed = stoutMath.RandomNumberBetween(15, 25)/1000; //different speeds cause logs to cross over each other
 		
 		public function log(pRiverPosition: Number) {
 			// constructor code
@@ -27,15 +27,15 @@
 				this.scaleX = 1;
 				this.scaleY = 1;
 			}
-			this.x = kernel.ToIsometric(xPosition, riverPosition).x;
-			this.y = kernel.ToIsometric(xPosition, riverPosition).y;
+			this.x = isoEngine.ToIsometric(xPosition, riverPosition).x;
+			this.y = isoEngine.ToIsometric(xPosition, riverPosition).y;
 			if (xPosition > 11) {
 				Delete();
 			}
 		}
 		
 		function Delete() {
-			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
+			isoEngine.entityList.splice(isoEngine.entityList.indexOf(this), 1);
 			this.parent.removeChild(this);
 		}
 		

@@ -55,24 +55,12 @@
 		function Delete(){
 			gameOverScreenInstance = new gameOverScreen();
 			mStage.addChild(gameOverScreenInstance); //add game over
-			kernel.gameTimer.stop(); //stop kernel update
+			isoEngine.gameTimer.stop(); //stop timer update
 			
-			//THIS OLD CODE TOTALLY DELETES THE PLAYER, NEW CODE JUST HIDES AND PAUSES READY FOR RESET
-			/*kernel.playerObject = null;
-			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
-			mStage.removeChild(this);
-			
-			mStage.removeChild(shadowObject);
-			shadowObject = null;
-			
-			movementComponent = null;
-			inputComponent = null;
-			collisionComponent = null;*/
 			
 			this.visible=false;
 			shadowObject.visible=false;
 			
-			//kernel.instance.RemoveAllInputListeners();
 		}
 		
 		function CreateShadow(){

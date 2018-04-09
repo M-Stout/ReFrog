@@ -20,8 +20,8 @@
 				if(checkTile(possessed.movementComponent.currentPosition) == "roadTile"){
 					if (checkTouchingCar()){
 						var splatEffect = new splat();
-						splatEffect.x = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
-						splatEffect.y = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
+						splatEffect.x = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
+						splatEffect.y = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
 						possessed.mStage.addChild(splatEffect);
 						
 						possessed.Delete();
@@ -32,8 +32,8 @@
 						possessed.movementComponent.targetPosition.x += checkTouchingLog().logSpeed; //move with log ( could be set to the speed of the log, but we'll assume they're always the same speed :) )
 					} else { //else die
 						var splashEffect = new splash();
-						splashEffect.x = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
-						splashEffect.y = kernel.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
+						splashEffect.x = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
+						splashEffect.y = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
 						possessed.mStage.addChild(splashEffect);
 						
 						possessed.Delete();
@@ -41,11 +41,11 @@
 				}
 				else if (checkTile(possessed.movementComponent.currentPosition) == "finishTile"  && !possessed.movementComponent.moving){ //if touching finish tile
 					if (possessed.typeOfEntity == "player") {
-						kernel.instance.FinishLevel();
+						isoEngine.instance.FinishLevel();
 					}
 					if (possessed.typeOfEntity == "cakePiece") {
 						possessed.Delete();
-						kernel.cakeNumber++;
+						isoEngine.cakeNumber++;
 					}
 				}
 			}
@@ -53,8 +53,8 @@
 		}
 		
 		function checkTile(position: Vector3D):String{
-			if (kernel.tiles[Math.round(position.x)][Math.round(position.y)]){
-				return kernel.tiles[Math.round(position.x)][Math.round(position.y)].typeOfTile;
+			if (isoEngine.tiles[Math.round(position.x)][Math.round(position.y)]){
+				return isoEngine.tiles[Math.round(position.x)][Math.round(position.y)].typeOfTile;
 			} else {
 				//trace("object with collider cannot get out of bounds :)");
 				return "";
@@ -62,11 +62,11 @@
 		}
 		
 		function checkTouchingLog(){
-			for (var entityIndex:int = 0; entityIndex < kernel.entityList.length; entityIndex++) {
-				if (kernel.entityList[entityIndex].typeOfEntity == "log") {
-					if (Math.abs(kernel.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.9) {//check x position
-						if(kernel.entityList[entityIndex].riverPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
-							return kernel.entityList[entityIndex];
+			for (var entityIndex:int = 0; entityIndex < isoEngine.entityList.length; entityIndex++) {
+				if (isoEngine.entityList[entityIndex].typeOfEntity == "log") {
+					if (Math.abs(isoEngine.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.9) {//check x position
+						if(isoEngine.entityList[entityIndex].riverPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
+							return isoEngine.entityList[entityIndex];
 						}
 					}
 				}
@@ -75,10 +75,10 @@
 		}
 		
 		function checkTouchingCar():Boolean{
-			for (var entityIndex:int = 0; entityIndex < kernel.entityList.length; entityIndex++) {
-				if (kernel.entityList[entityIndex].typeOfEntity == "car") {
-					if (Math.abs(kernel.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.5) {//check x position
-						if(kernel.entityList[entityIndex].roadPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
+			for (var entityIndex:int = 0; entityIndex < isoEngine.entityList.length; entityIndex++) {
+				if (isoEngine.entityList[entityIndex].typeOfEntity == "car") {
+					if (Math.abs(isoEngine.entityList[entityIndex].xPosition-possessed.movementComponent.currentPosition.x) < 0.5) {//check x position
+						if(isoEngine.entityList[entityIndex].roadPosition == Math.round(possessed.movementComponent.currentPosition.y)){//check y position
 							return true;
 						}
 					}

@@ -27,15 +27,15 @@
 				this.scaleX = 1;
 				this.scaleY = 1;
 			}
-			this.x = kernel.ToIsometric(xPosition, roadPosition).x;
-			this.y = kernel.ToIsometric(xPosition, roadPosition).y;
+			this.x = isoEngine.ToIsometric(xPosition, roadPosition).x;
+			this.y = isoEngine.ToIsometric(xPosition, roadPosition).y;
 			if (xPosition > 11) {
 				Delete();
 			}
 		}
 		
 		function Delete() {
-			kernel.entityList.splice(kernel.entityList.indexOf(this), 1);
+			isoEngine.entityList.splice(isoEngine.entityList.indexOf(this), 1);
 			this.parent.removeChild(this);
 		}
 		

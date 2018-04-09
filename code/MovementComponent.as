@@ -5,7 +5,7 @@
 
 		var possessed;
 		
-		var currentPosition = new Vector3D(kernel.RandomNumberBetween(1, 8), 0, 0);
+		var currentPosition = new Vector3D(stoutMath.RandomNumberBetween(1, 8), 0, 0);
 		var fromPosition = new Vector3D(currentPosition.x, currentPosition.y, 0);
 		var targetPosition = new Vector3D(currentPosition.x, 0, 0);
 		
@@ -34,10 +34,10 @@
 				
 				maxBounceHeight = pBounceHeight;
 				
-				for (var entityIndex:int = 0; entityIndex < kernel.entityList.length; entityIndex++) {
-					if (kernel.entityList[entityIndex].typeOfEntity == "cakePiece") { 
-						if(Vector3D.distance(kernel.entityList[entityIndex].movementComponent.currentPosition, targetPosition) < 0.5){ //if going to jump into a cake piece, move the cake piece in the same direction
-							kernel.entityList[entityIndex].movementComponent.Move(xInput, yInput, 10);
+				for (var entityIndex:int = 0; entityIndex < isoEngine.entityList.length; entityIndex++) {
+					if (isoEngine.entityList[entityIndex].typeOfEntity == "cakePiece") { 
+						if(Vector3D.distance(isoEngine.entityList[entityIndex].movementComponent.currentPosition, targetPosition) < 0.5){ //if going to jump into a cake piece, move the cake piece in the same direction
+							isoEngine.entityList[entityIndex].movementComponent.Move(xInput, yInput, 10);
 						}
 					}
 				}
@@ -97,13 +97,13 @@
 				}				
 			}
 			
-			possessed.shadowObject.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).x;
-			possessed.shadowObject.y = kernel.ToIsometric(currentPosition.x, currentPosition.y, 0).y;
+			possessed.shadowObject.x = isoEngine.ToIsometric(currentPosition.x, currentPosition.y, 0).x;
+			possessed.shadowObject.y = isoEngine.ToIsometric(currentPosition.x, currentPosition.y, 0).y;
 			possessed.shadowObject.alpha = possessed.alpha*(currentHeight/maxBounceHeight);
 			
 			//set visual position to isometric perspective
-			possessed.x = kernel.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).x;
-			possessed.y = kernel.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).y;
+			possessed.x = isoEngine.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).x;
+			possessed.y = isoEngine.ToIsometric(currentPosition.x, currentPosition.y, currentHeight).y;
 		}
 
 	}

@@ -42,6 +42,8 @@
 		
 		var isPaused = false;
 		
+		var biome: int = 1;
+		
 		//game timer
 		var _period:Number = 1000/60;
 		var gameTimer:Timer = new Timer(_period);
@@ -176,7 +178,7 @@
 			tiles[x][y].SetProperPosition();
 			tiles[x][y].y -= 1000;
 			
-			tiles[x][y].SetBiome(2);
+			tiles[x][y].SetBiome(biome);
 			
 			tiles[x][y].width = 120;
 			tiles[x][y].height = 114.4;
@@ -222,6 +224,7 @@
 		}
 		
 		function GenerateLevel(){
+			biome = stoutMath.RandomNumberBetween(1, 3);
 			var numberOfRivers: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
 			var numberOfRoads: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
 			

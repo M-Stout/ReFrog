@@ -14,6 +14,8 @@
 		
 		var carSpeed = 0.03;
 		
+		var biome: int = 1;
+		
 		public function car(pRoadPosition: Number, pEngine) {
 			// constructor code
 			mEngine = pEngine;
@@ -36,6 +38,12 @@
 			if (xPosition > 11) {
 				Delete();
 			}
+		}
+		
+		public function SetBiome(pBiome: int)
+		{
+			biome = pBiome;
+			gotoAndStop(biome);
 		}
 		
 		function Delete() {

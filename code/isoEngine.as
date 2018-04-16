@@ -203,6 +203,7 @@
 		
 		function spawnLog(riverPosition) {
 			var spawningLog = new log(riverPosition, this);
+			spawningLog.SetBiome(biome);
 			mainStage.addChild(spawningLog);
 			entityList.push(spawningLog);
 			
@@ -214,6 +215,7 @@
 		
 		function spawnCar(roadPosition) {
 			var spawningCar = new car(roadPosition, this);
+			spawningCar.SetBiome(biome);
 			mainStage.addChild(spawningCar);
 			entityList.push(spawningCar);
 			

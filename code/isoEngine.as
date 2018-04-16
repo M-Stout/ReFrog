@@ -106,6 +106,10 @@
 				ResetLevel();
 			}
 			
+			if (e.keyCode == 84){//t
+				RemoveEngine();
+			}
+			
 			if (e.keyCode == 80){ //p for pause
 				if (isPaused){
 					isPaused = false;
@@ -276,7 +280,7 @@
 		
 		function ResetLevel(){
 			
-			gameTimer.start();
+			gameTimer.start(); //un-pauses level
 			
 			introPlaying = true;
 			introAnimationPosition = 1000;
@@ -408,6 +412,23 @@
 		function RemoveAllInputListeners(){
 			mainStage.removeEventListener(KeyboardEvent.KEY_DOWN, KeyDown); //stops all key inputs
 			mainStage.removeEventListener(KeyboardEvent.KEY_UP, KeyUp);
+		}
+		
+		function RemoveEngine(){
+			trace("Warning! Engine Removal function just run!");
+			
+			gameTimer.stop();
+			
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
+				mainStage.removeChild(entityList[entityIndex]);
+			}
+			entityList.splice(0);
+			for (var tileXIndex:int = 0; tileXIndex < tiles.length; tileXIndex++) {
+				for (var tileYIndex:int = 0; tileYIndex < tiles[tileXIndex].length; tileYIndex++) {
+					mainStage.removeChild(tiles[tileXIndex][tileYIndex]);
+				}
+			}
+			tiles.splice(0);
 		}
 		
 		static function ToIsometric(inputX: Number, inputY: Number, yOffset: Number = 0){

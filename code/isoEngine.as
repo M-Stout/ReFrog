@@ -176,6 +176,8 @@
 			tiles[x][y].SetProperPosition();
 			tiles[x][y].y -= 1000;
 			
+			tiles[x][y].SetBiome(2);
+			
 			tiles[x][y].width = 120;
 			tiles[x][y].height = 114.4;
 			mainStage.addChild(tiles[x][y]);

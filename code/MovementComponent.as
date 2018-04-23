@@ -130,7 +130,7 @@
 			if (possessed.shadowObject != null){
 				possessed.shadowObject.x = isoEngine.ToIsometric(currentPosition.x, currentPosition.y, 0).x;
 				possessed.shadowObject.y = isoEngine.ToIsometric(currentPosition.x, currentPosition.y, 0).y;
-				possessed.shadowObject.alpha = possessed.alpha*(currentHeight/maxBounceHeight);
+				possessed.shadowObject.alpha = possessed.alpha*(currentPosition.z/25);
 			}
 				
 			//set visual position to isometric perspective

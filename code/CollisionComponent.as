@@ -50,9 +50,23 @@
 				if (possessed.typeOfEntity == "cakePiece"){
 
 					if (checkTouchingEntity()){
-						if (checkTouchingEntity().typeOfEntity == "player"){
-							possessed.movementComponent.AddForce((checkTouchingEntity().movementComponent.currentPosition - possessed.movementComponent.currentPosition));
+						if (checkTouchingEntity().typeOfEntity == "player" || checkTouchingEntity().typeOfEntity == "cakePiece"){
+							
+							var forceToAdd = new Vector3D();
+							forceToAdd = possessed.movementComponent.currentPosition.subtract(checkTouchingEntity().movementComponent.currentPosition);
+							forceToAdd.scaleBy(0.1);
+							if (Math.abs(forceToAdd.x) > Math.abs(forceToAdd.y)){
+								forceToAdd.y = 0;
+							} else {
+								forceToAdd.x = 0;
+							}
+							possessed.movementComponent.AddForce(forceToAdd);
 						}
+					}
+					if (checkTile(possessed.movementComponent.currentPosition) == "waterTile"){
+						possessed.movementComponent.onFloor = false;
+						possessed.movementComponent.AddForce(new Vector3D(0, 0, 1));
+						possessed.movementComponent.currentVelocity.scaleBy(1.1);
 					}
 					
 				}
@@ -77,8 +91,8 @@
 						}
 					} else { //else die
 						var splashEffect = new splash();
-						splashEffect.x = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
-						splashEffect.y = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
+						splashEffect.x = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).x;
+						splashEffect.y = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).y;
 						possessed.mStage.addChild(splashEffect);
 						
 						possessed.Delete();

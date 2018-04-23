@@ -41,6 +41,7 @@
 		var scoreScreenCakeAnimation;
 		
 		var isPaused = false;
+		var pausedScreenInstance;
 		
 		var biome: int = 1;
 		
@@ -110,9 +111,15 @@
 			
 			if (e.keyCode == 80){ //p for pause
 				if (isPaused){
+					mainStage.removeChild(pausedScreenInstance);
+					pausedScreenInstance = null;
+					
 					isPaused = false;
 					gameTimer.start();
 				} else {
+					pausedScreenInstance = new pausedScreen();
+					mainStage.addChild(pausedScreenInstance);
+					
 					isPaused = true;
 					gameTimer.stop();
 				}

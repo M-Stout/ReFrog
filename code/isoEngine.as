@@ -292,8 +292,6 @@
 			playerObject.shadowObject.visible = true;
 			
 			playerObject.movementComponent.currentPosition = new Vector3D(stoutMath.RandomNumberBetween(1, 8), 0, 0);
-			playerObject.movementComponent.fromPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, playerObject.movementComponent.currentPosition.y, 0);
-			playerObject.movementComponent.targetPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, 0, 0);
 			
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
 				mainStage.removeChild(entityList[entityIndex]);

@@ -65,7 +65,9 @@
 					}
 					if (checkTile(possessed.movementComponent.currentPosition) == "waterTile"){
 						possessed.movementComponent.onFloor = false;
-						possessed.movementComponent.AddForce(new Vector3D(0, 0, 1));
+						if (possessed.movementComponent.currentPosition.z < 10){
+							possessed.movementComponent.AddForce(new Vector3D(0, 0, 1));
+						}
 						possessed.movementComponent.currentVelocity.scaleBy(1.1);
 					}
 					

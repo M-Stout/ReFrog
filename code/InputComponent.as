@@ -19,6 +19,8 @@
 			
 		}
 		
+		//THE KEY FOR SHIFT IS 16
+		
 		public function KeyDown(e:KeyboardEvent){
 			if (possessed.movementComponent.onFloor){
 				if (e.keyCode == 87){//w

@@ -156,7 +156,7 @@
 				}
 			}
 			carSpawnCountdown++;
-			if (carSpawnCountdown > (2*60)){ //5 seconds at 60fps
+			if (carSpawnCountdown > (3*60)){ //3 seconds at 60fps
 				carSpawnCountdown = 0;
 				for (var roadIndex:int = 0; roadIndex < roadPositions.length; roadIndex++) {
 					spawnCar(roadPositions[roadIndex]);
@@ -201,8 +201,12 @@
 			}
 		}
 		
+		var spawningLog;
 		function spawnLog(riverPosition) {
-			var spawningLog = new log(riverPosition, this);
+			if (spawningLog != null){
+				var logAhead = spawningLog;
+			}
+			spawningLog = new log(riverPosition, this);
 			mainStage.addChild(spawningLog);
 			entityList.push(spawningLog);
 			
@@ -210,16 +214,28 @@
 				mainStage.setChildIndex(playerObject, mainStage.numChildren-1);
 				mainStage.setChildIndex(playerObject.shadowObject, mainStage.numChildren-2);
 			}
+			if (logAhead != null){
+				mainStage.setChildIndex(logAhead, mainStage.getChildIndex(logAhead)+1);
+				mainStage.setChildIndex(spawningLog, mainStage.getChildIndex(logAhead)-1);
+			}
 		}
 		
+		var spawningCar;
 		function spawnCar(roadPosition) {
-			var spawningCar = new car(roadPosition, this);
+			if (spawningCar != null){
+				var carAhead = spawningCar;
+			}
+			spawningCar = new car(roadPosition, this);
 			mainStage.addChild(spawningCar);
 			entityList.push(spawningCar);
 			
 			if (playerObject){
 				mainStage.setChildIndex(playerObject, mainStage.numChildren-1);
 				mainStage.setChildIndex(playerObject.shadowObject, mainStage.numChildren-2);
+			}
+			if (carAhead != null){
+				mainStage.setChildIndex(carAhead, mainStage.getChildIndex(carAhead)+1);
+				mainStage.setChildIndex(spawningCar, mainStage.getChildIndex(carAhead)-1);
 			}
 		}
 		

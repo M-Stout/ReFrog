@@ -113,7 +113,7 @@
 					if (checkTouchingEntity() != null){ //prevent errors when checking entity type
 						if(checkTouchingEntity().typeOfEntity == "log"){ //if touching log
 							if (possessed.typeOfEntity == "log"){ //if a log is touching a log
-								possessed.logSpeed = checkTouchingEntity().logSpeed; trace("log touching log!!!");
+								possessed.logSpeed = checkTouchingEntity().logSpeed;
 							}
 						}
 					}								

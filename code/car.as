@@ -15,7 +15,7 @@
 		
 		var shadowObject;
 				
-		var logSpeed = stoutMath.RandomNumberBetween(15, 25)/1000; //different speeds cause cars to cross over each other
+		var carSpeed = stoutMath.RandomNumberBetween(15, 25)/1000; //different speeds cause cars to cross over each other
 		
 		public function car(pRoadPosition: Number, pEngine) {
 			// constructor code
@@ -38,7 +38,7 @@
 			movementComponent.Update();
 			collisionComponent.Update();
 			
-			movementComponent.currentVelocity.x = logSpeed;
+			movementComponent.currentVelocity.x = carSpeed;
 			
 			//make it bigger until 0, make if smaller after 10. delete at 15 (for clean up, it's already invisible by then)
 			if (movementComponent.currentPosition.x < 0) {

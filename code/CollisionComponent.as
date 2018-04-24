@@ -80,28 +80,43 @@
 				if(checkTile(possessed.movementComponent.currentPosition) == "roadTile"){
 					if (checkTouchingEntity() != null){
 						if (checkTouchingEntity().typeOfEntity == "car"){
-							var splatEffect = new splat();
-							splatEffect.x = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).x;
-							splatEffect.y = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).y;
-							possessed.mStage.addChild(splatEffect);
-							
-							possessed.Delete();
+							if (possessed.typeOfEntity == "car"){ //if a car is touching a car
+								possessed.carSpeed = checkTouchingEntity().carSpeed;
+ 							} else { //if a car is touching anything other than another car
+								var splatEffect = new splat();
+								splatEffect.x = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).x;
+								splatEffect.y = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).y;
+								possessed.mStage.addChild(splatEffect);
+								
+								possessed.Delete();
+							}
 						}
 					}
 				}
-				else if (checkTile(possessed.movementComponent.currentPosition) == "waterTile" && possessed.movementComponent.onFloor){ //if touching water
-					if (checkTouchingEntity() != null){
-						if(checkTouchingEntity().typeOfEntity == "log" && possessed.typeOfEntity == "player"){ //if touching log
-							possessed.movementComponent.currentVelocity.x += checkTouchingEntity().logSpeed/10; //move with log
+				else if (checkTile(possessed.movementComponent.currentPosition) == "waterTile"){ //if touching water
+					if (possessed.movementComponent.onFloor){ //if not floating (which would avoid the water)
+						if (checkTouchingEntity() != null){ //prevent errors when checking entity type
+							if(checkTouchingEntity().typeOfEntity == "log"){ //if touching log
+								if (possessed.typeOfEntity == "player"){//if a player is touching a log
+									possessed.movementComponent.currentVelocity.x += checkTouchingEntity().logSpeed/10; //move with log
+								}
+							}
+						} else { //else die
+							var splashEffect = new splash();
+							splashEffect.x = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).x;
+							splashEffect.y = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).y;
+							possessed.mStage.addChild(splashEffect);
+							
+							possessed.Delete();
 						}
-					} else { //else die
-						var splashEffect = new splash();
-						splashEffect.x = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).x;
-						splashEffect.y = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).y;
-						possessed.mStage.addChild(splashEffect);
-						
-						possessed.Delete();
-					}
+					} 
+					if (checkTouchingEntity() != null){ //prevent errors when checking entity type
+						if(checkTouchingEntity().typeOfEntity == "log"){ //if touching log
+							if (possessed.typeOfEntity == "log"){ //if a log is touching a log
+								possessed.logSpeed = checkTouchingEntity().logSpeed; trace("log touching log!!!");
+							}
+						}
+					}								
 				}
 				else if (checkTile(possessed.movementComponent.currentPosition) == "finishTile"  && possessed.movementComponent.onFloor){ //if touching finish tile
 					if (possessed.typeOfEntity == "player") { //go to score screen

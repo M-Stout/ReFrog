@@ -6,6 +6,7 @@
 	public class log extends MovieClip {
 		
 		var mEngine;
+		var mStage;
 		
 		var typeOfEntity = "log";
 		
@@ -14,11 +15,12 @@
 		
 		var shadowObject;
 				
-		var logSpeed = stoutMath.RandomNumberBetween(15, 25)/1000; //different speeds cause logs to cross over each other
+		var logSpeed = stoutMath.RandomNumberBetween(5, 25)/1000; //different speeds cause logs to cross over each other
 		
 		public function log(pRiverPosition: Number, pEngine) {
 			// constructor code
 			mEngine = pEngine;
+			mStage = mEngine.mainStage;
 			
 			movementComponent = new MovementComponent(this);
 			collisionComponent = new CollisionComponent(this);

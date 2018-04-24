@@ -45,6 +45,8 @@
 		
 		var biome: int = 1;
 		
+		var backgroundObject;
+		
 		//game timer
 		var _period:Number = 1000/60;
 		var gameTimer:Timer = new Timer(_period);
@@ -232,8 +234,37 @@
 			}
 		}
 		
+		function biomeBackgroundSelector(inputBiome){
+			
+			switch (inputBiome){
+				case 1:
+					return (new grassBG());
+				case 2:
+					return (new iceBG());
+				case 3:
+					return (new cakeBG());
+				default:
+					return new grassBG();
+			}
+			
+		}
+		
+		function switchBackground(targetBackground){
+			if (backgroundObject != null){
+				mainStage.removeChild(backgroundObject);
+				backgroundObject = null;
+			}
+			
+			backgroundObject = targetBackground;
+			mainStage.addChild(backgroundObject);
+			mainStage.setChildIndex(backgroundObject, 0);
+		}
+		
 		function GenerateLevel(){
 			biome = stoutMath.RandomNumberBetween(1, 3);
+			
+			switchBackground(biomeBackgroundSelector(biome));
+			
 			var numberOfRivers: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
 			var numberOfRoads: Number = Math.round(Math.random()*2)+1; //should be a number between 1 and 3
 			
@@ -327,7 +358,7 @@
 			for (var y:int = 0; y < 10; y++) {
 				for (var x:int = 0; x < 10; x++) {
 					if (tiles[x][y]){
-						mainStage.setChildIndex(tiles[x][y], x);
+						mainStage.setChildIndex(tiles[x][y], x+1); //The +1 is to account for the background image (which should be at 0, the lowest number)
 					}
 				}
 			}

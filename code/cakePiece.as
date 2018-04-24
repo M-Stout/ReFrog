@@ -16,7 +16,7 @@
 		var shadowObject;
 		
 		var introPlaying = true;
-		var introAnimationPosition = 1600;
+		var introAnimationPosition = 2000;
 		
 		public function cakePiece(pEngine) {
 			mEngine = pEngine;

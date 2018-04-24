@@ -47,7 +47,7 @@
 			}
 			
 			if (possessed.movementComponent){
-				if (possessed.typeOfEntity == "cakePiece"){
+				if (possessed.typeOfEntity == "cakePiece"){ //special collision behaviours for cake pieces
 
 					if (checkTouchingEntity()){
 						if (checkTouchingEntity().typeOfEntity == "player" || checkTouchingEntity().typeOfEntity == "cakePiece"){
@@ -68,6 +68,9 @@
 						if (possessed.movementComponent.currentPosition.z < 10){
 							possessed.movementComponent.AddForce(new Vector3D(0, 0, 1));
 						}
+						if (possessed.movementComponent.currentVelocity.lengthSquared < 1) { //if the cake piece is REALLY slow on the water, speed it up a bit more
+							possessed.movementComponent.currentVelocity.scaleBy(1.2);
+						}
 						possessed.movementComponent.currentVelocity.scaleBy(1.1);
 					}
 					
@@ -78,8 +81,8 @@
 					if (checkTouchingEntity() != null){
 						if (checkTouchingEntity().typeOfEntity == "car"){
 							var splatEffect = new splat();
-							splatEffect.x = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).x;
-							splatEffect.y = isoEngine.ToIsometric(Math.round(possessed.movementComponent.currentPosition.x), Math.round(possessed.movementComponent.currentPosition.y), 0).y;
+							splatEffect.x = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).x;
+							splatEffect.y = isoEngine.ToIsometric(possessed.movementComponent.currentPosition.x, possessed.movementComponent.currentPosition.y, 0).y;
 							possessed.mStage.addChild(splatEffect);
 							
 							possessed.Delete();

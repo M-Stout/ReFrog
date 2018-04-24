@@ -36,7 +36,7 @@
 			CreateShadow();
 			
 			
-			collisionComponent.colliderCircleRadius = 0.75; //set the size of the collider for cake pieces
+			collisionComponent.colliderCircleRadius = 1; //set the size of the collider for cake pieces
 		}
 		
 		function Update(){

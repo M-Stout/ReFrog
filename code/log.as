@@ -17,6 +17,8 @@
 				
 		var logSpeed = stoutMath.RandomNumberBetween(15, 25)/1000; //different speeds cause logs to cross over each other
 		
+		var biome: int = 1;
+		
 		public function log(pRiverPosition: Number, pEngine) {
 			// constructor code
 			mEngine = pEngine;
@@ -55,6 +57,12 @@
 				this.scaleY = 1;
 			}
 			
+		}
+		
+		public function SetBiome(pBiome: int)
+		{
+			biome = pBiome;
+			gotoAndStop(biome);
 		}
 		
 		function Delete() {

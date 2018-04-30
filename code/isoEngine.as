@@ -106,6 +106,10 @@
 				ResetLevel();
 			}
 			
+			if (e.keyCode == 84){//t
+				RemoveEngine();
+			}
+			
 			if (e.keyCode == 80){ //p for pause
 				if (isPaused){
 					isPaused = false;
@@ -152,7 +156,7 @@
 				}
 			}
 			carSpawnCountdown++;
-			if (carSpawnCountdown > (2*60)){ //5 seconds at 60fps
+			if (carSpawnCountdown > (3*60)){ //3 seconds at 60fps
 				carSpawnCountdown = 0;
 				for (var roadIndex:int = 0; roadIndex < roadPositions.length; roadIndex++) {
 					spawnCar(roadPositions[roadIndex]);
@@ -197,8 +201,12 @@
 			}
 		}
 		
+		var spawningLog;
 		function spawnLog(riverPosition) {
-			var spawningLog = new log(riverPosition, this);
+			if (spawningLog != null){
+				var logAhead = spawningLog;
+			}
+			spawningLog = new log(riverPosition, this);
 			mainStage.addChild(spawningLog);
 			entityList.push(spawningLog);
 			
@@ -206,16 +214,28 @@
 				mainStage.setChildIndex(playerObject, mainStage.numChildren-1);
 				mainStage.setChildIndex(playerObject.shadowObject, mainStage.numChildren-2);
 			}
+			if (logAhead != null){
+				mainStage.setChildIndex(logAhead, mainStage.getChildIndex(logAhead)+1);
+				mainStage.setChildIndex(spawningLog, mainStage.getChildIndex(logAhead)-1);
+			}
 		}
 		
+		var spawningCar;
 		function spawnCar(roadPosition) {
-			var spawningCar = new car(roadPosition, this);
+			if (spawningCar != null){
+				var carAhead = spawningCar;
+			}
+			spawningCar = new car(roadPosition, this);
 			mainStage.addChild(spawningCar);
 			entityList.push(spawningCar);
 			
 			if (playerObject){
 				mainStage.setChildIndex(playerObject, mainStage.numChildren-1);
 				mainStage.setChildIndex(playerObject.shadowObject, mainStage.numChildren-2);
+			}
+			if (carAhead != null){
+				mainStage.setChildIndex(carAhead, mainStage.getChildIndex(carAhead)+1);
+				mainStage.setChildIndex(spawningCar, mainStage.getChildIndex(carAhead)-1);
 			}
 		}
 		
@@ -276,7 +296,7 @@
 		
 		function ResetLevel(){
 			
-			gameTimer.start();
+			gameTimer.start(); //un-pauses level
 			
 			introPlaying = true;
 			introAnimationPosition = 1000;
@@ -288,8 +308,6 @@
 			playerObject.shadowObject.visible = true;
 			
 			playerObject.movementComponent.currentPosition = new Vector3D(stoutMath.RandomNumberBetween(1, 8), 0, 0);
-			playerObject.movementComponent.fromPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, playerObject.movementComponent.currentPosition.y, 0);
-			playerObject.movementComponent.targetPosition = new Vector3D(playerObject.movementComponent.currentPosition.x, 0, 0);
 			
 			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
 				mainStage.removeChild(entityList[entityIndex]);
@@ -408,6 +426,23 @@
 		function RemoveAllInputListeners(){
 			mainStage.removeEventListener(KeyboardEvent.KEY_DOWN, KeyDown); //stops all key inputs
 			mainStage.removeEventListener(KeyboardEvent.KEY_UP, KeyUp);
+		}
+		
+		function RemoveEngine(){
+			trace("Warning! Engine Removal function just run!");
+			
+			gameTimer.stop();
+			
+			for (var entityIndex:int = 0; entityIndex < entityList.length; entityIndex++) {
+				mainStage.removeChild(entityList[entityIndex]);
+			}
+			entityList.splice(0);
+			for (var tileXIndex:int = 0; tileXIndex < tiles.length; tileXIndex++) {
+				for (var tileYIndex:int = 0; tileYIndex < tiles[tileXIndex].length; tileYIndex++) {
+					mainStage.removeChild(tiles[tileXIndex][tileYIndex]);
+				}
+			}
+			tiles.splice(0);
 		}
 		
 		static function ToIsometric(inputX: Number, inputY: Number, yOffset: Number = 0){

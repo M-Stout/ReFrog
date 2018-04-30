@@ -216,12 +216,11 @@
 		
 		var spawningLog;
 		function spawnLog(riverPosition) {
-			var spawningLog = new log(riverPosition, this);
-			spawningLog.SetBiome(biome);
 			if (spawningLog != null){
 				var logAhead = spawningLog;
 			}
 			spawningLog = new log(riverPosition, this);
+			spawningLog.SetBiome(biome);
 			mainStage.addChild(spawningLog);
 			entityList.push(spawningLog);
 			
@@ -237,12 +236,11 @@
 		
 		var spawningCar;
 		function spawnCar(roadPosition) {
-			var spawningCar = new car(roadPosition, this);
-			spawningCar.SetBiome(biome);
 			if (spawningCar != null){
 				var carAhead = spawningCar;
 			}
 			spawningCar = new car(roadPosition, this);
+			spawningCar.SetBiome(biome);
 			mainStage.addChild(spawningCar);
 			entityList.push(spawningCar);
 			
@@ -360,6 +358,10 @@
 				mainStage.removeChild(entityList[entityIndex]);
 			}
 			entityList.splice(0);
+			
+			spawningCar = null;
+			spawningLog = null;			
+			
 			entityList.push(playerObject);
 			mainStage.addChild(playerObject);
 			

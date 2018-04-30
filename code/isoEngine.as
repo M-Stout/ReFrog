@@ -417,7 +417,7 @@
 			scoreTextField.visible = true;
 			scoreScreenBackground.visible = true;
 			
-			scoreScreenCakeAnimation = new cakeAnimation(900, 600, cakeNumber, 1.2, this);
+			scoreScreenCakeAnimation = new cakeAnimation(900, 600, cakeNumber, 1.2, mainStage);
 			mainStage.addChild(scoreScreenCakeAnimation);
 			
 			gameTimer.stop();

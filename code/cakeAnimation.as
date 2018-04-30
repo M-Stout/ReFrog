@@ -22,7 +22,7 @@
 			this.scaleX = scale;
 			this.scaleY = scale;
 			
-			pStage = mStage;
+			mStage = pStage;
 			
 			visible = true;
 			play();
@@ -47,7 +47,7 @@
 			if(currentFrame == totalFrames-1){
 				gotoAndStop(totalFrames);
 				secondLayer.visible = true;
-				mStage.setChildIndex(secondLayer, isoEngine.instance.stage.numChildren-1);
+				mStage.setChildIndex(secondLayer, mStage.numChildren-1);
 				secondLayer.play();
 			}
 			

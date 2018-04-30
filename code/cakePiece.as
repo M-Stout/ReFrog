@@ -28,14 +28,15 @@
 				var possibleDropSite = new Vector3D(stoutMath.RandomNumberBetween(1, 8), stoutMath.RandomNumberBetween(1, 8), 0);
 				if (collisionComponent.checkTile(possibleDropSite) == "grassTile"){
 					movementComponent.currentPosition = new Vector3D(possibleDropSite.x, possibleDropSite.y, 0);
-					movementComponent.targetPosition = new Vector3D(possibleDropSite.x, possibleDropSite.y, 0);
 					break;
 				}
 			}
-			movementComponent.Move(0, 0, 100);
 			
 			gotoAndStop(stoutMath.RandomNumberBetween(1, 8));
 			CreateShadow();
+			
+			
+			collisionComponent.colliderCircleRadius = 1; //set the size of the collider for cake pieces
 		}
 		
 		function Update(){

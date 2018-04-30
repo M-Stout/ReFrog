@@ -32,7 +32,7 @@
 				}
 			}
 			
-			gotoAndStop(stoutMath.RandomNumberBetween(1, 8));
+			gotoAndStop(stoutMath.RandomNumberBetween(1, 8));//randomly choosing which frame to display (only aesthetic)
 			CreateShadow();
 			
 			
